@@ -1,0 +1,111 @@
+\chapter{The basics} \label{ch:Chapter1Name}
+
+
+\section{Referring and citing}
+
+\subsection{Citing options}
+This information came from \citep{test} is done using $\setminus citep\{\}$, however, you can also use citing without brackets such as \say{according to \citet{test} ... } with $\setminus citet\{\}$
+
+\subsection{Refer to a single figure}
+Here we make a reference to figure \ref{fig:1}. We can also make the work \say{figure} part of the reference, i.e. \autoref{fig:1}.
+\cite{test}
+
+%Figures
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.8\textwidth]{Images/RUGLogo.png}
+\caption{Caption of the figure}
+\label{fig:1}
+\end{figure}
+
+\subsection{Refer to the appendix}
+We have placed additional information in the appendix, it is placed in \autoref{appendix_1:} or if you want to refer to the figure specifically, then we can use \autoref{fig:appendix_figure}.
+
+\section{Equations}
+In \LaTeX you can make amazing equations quite easily. Especially, if you have Premium Overleaf (for free with your RUG account). At the top of your file press the $\Omega$ button, this will open a menu with almost all math symbols, saving you a lot of time remembering the names.
+
+First, a simple equation is shown in \autoref{eq:pythagoras}
+\begin{equation}
+    c = \sqrt{a^2 + b^2}
+    \label{eq:pythagoras}
+\end{equation}
+
+We can also do this equation inline, such as $c = \sqrt{a^2 + b^2}$. But this is not always possible and may look bad.
+
+In \autoref{eq:align1} we see a number, the first line has no number as we used \say{$\setminus nonumber$}, and the last equation is referenced separately as \autoref{eq:align2}
+\begin{align}
+    c = \sqrt{a^2 + b^2} \nonumber \\
+    e^{i \pi} + 1 = 0 \label{eq:align1} \\
+    h_{ij}(t) = \frac{1}{d_{ij}(t)} e^{\begin{pmatrix} \frac{-2\pi \sqrt{-1}}{\lambda} d_{ij}(t) \end{pmatrix}}
+    \label{eq:align2}
+\end{align}
+
+Yo\zetau can also make things fancy using colours and arrows, such as shown in \autoref{eq:betaarrows}. However, make sure it is readable and doesn't become a circus. Here, we use the package \say{Tikz} to create the arrows. Effectively, we create an image and place this over our equation. This can become quite difficult to read in the code, so just mess around with things and use the internet.
+
+% command for the arrows
+\newcommand{\tikzmark}[1]{\tikz[overlay,remember picture] \node (#1) {};}
+
+\begin{equation}
+    \underbrace{\beta(k)}_{\text{larger}\tikzmark{c}} = \color{blue} ||l^* - p(k) - \underbrace{Tu(k)}_{\tikzmark{d}\text{larger}}  ||^2 \color{black} - \color{red} || y(k)v(k)- \underbrace{Tu(k)}_{\tikzmark{e}\text{larger}}||^2
+    \begin{tikzpicture}[overlay,remember picture,out=315,in=225,distance=0.5cm]
+        \draw[<-,black,shorten >=3pt,shorten <=3pt] (c.center) to (d.center);
+    \end{tikzpicture}
+    \begin{tikzpicture}[overlay,remember picture,out=315,in=225,distance=0.7cm]
+        \draw[<-,black,shorten >=3pt,shorten <=3pt] (c.center) to (e.center);
+    \end{tikzpicture}
+    \color{black}
+    \label{eq:betaarrows}
+\end{equation}
+
+\subsection{Brackets}
+Let's take a look at some options for brackets in formulas with matrices. A lot of brackets can be used, which you can find here \url{https://www.overleaf.com/learn/latex/Brackets_and_Parentheses}. However, it is often just as easy to create a matrix to obtain the same result. We see an example in \autoref{eq:matrix}. You can find each matrix bracket type here \url{https://www.overleaf.com/learn/latex/Matrices}.
+
+\begin{equation}
+    \mathbf{a(\theta, \phi)} =
+    \begin{bmatrix}
+        e^{( \frac{2 \pi \rho_k \sqrt{-1}}{\lambda} )} \sin(\theta) \sin(\xi_k) \cos(\phi - \varphi_k) + \cos(\xi_k) \cos(\theta) \\
+        \vdots \\
+        e^{( \frac{2 \pi \rho_{l} \sqrt{-1}}{\lambda} )} \sin(\theta) \sin(\xi_{l}) \cos(\phi - \varphi_{l}) + \cos(\xi_{l}) \cos(\theta)
+    \end{bmatrix}
+    \label{eq:matrix}
+\end{equation}
+
+\subsection{Leftover mathematical expressions}
+Here is a summation example in \autoref{eq:Fij}, an integral in \autoref{eq:integral}, some cases in \autoref{eq:cases} and a minimization problem in \autoref{eq:minimize}.
+
+\begin{equation}
+    F_{ij}(t) = \begin{vmatrix} \sum\limits_{t=t_k}^{t_{k+M}} h_{ij}(t) a(\theta,\phi)(t) \end{vmatrix} ^2
+    \label{eq:Fij}
+\end{equation}
+
+\begin{equation}
+    \int_{a}^{b} x^2 \,dx
+    \label{eq:integral}
+\end{equation}
+
+\begin{equation}
+    \begin{cases}
+        p(k+1) = p(k) + T u(k) \\
+        y(k) = \left\|l^* - p(k) \right\|
+    \end{cases}
+    \label{eq:cases}
+\end{equation}
+
+\begin{equation}
+\begin{aligned}
+    \min_{x} \quad & f(x) = x^\mathsf{T} 
+    \begin{bmatrix} 
+     2 & 0 \\ 0 & 4
+    \end{bmatrix}
+    x - \mathbb{E}[u]
+    \begin{bmatrix} 
+     8 & 16
+    \end{bmatrix}
+    x\\
+    \textrm{s.t.} \quad & x \geq 0\\
+\end{aligned}
+\label{eq:minimize}
+\end{equation}
+
+\subsection{Bonus Tip}
+Install Mathpix (demo video: \url{https://mathpix.com/image-to-latex}). You can create \LaTeX formulas from screenshots, saving you a lot of time!

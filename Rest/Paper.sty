@@ -1,0 +1,96 @@
+\ProvidesPackage{Paper}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+\usepackage{graphicx}
+\usepackage[dvipsnames]{xcolor}
+\usepackage[top=25mm, bottom=25mm, left=25mm, right=25mm]{geometry}
+\usepackage{microtype}
+% \usepackage[nopatch=eqnum]{microtype} sometimes better
+\usepackage{titlesec}
+\titleformat{\chapter}[hang]
+{\normalfont\Large\bfseries}{\chaptertitlename\ \thechapter:}{1em}{}
+\titlespacing*{\chapter}{0pt}{12pt plus 4pt minus 2pt}{25pt plus 2pt minus 2pt}
+\titlespacing\section{0pt}{12pt plus 4pt minus 2pt}{0pt plus 2pt minus 2pt}
+\titlespacing\subsection{0pt}{10pt plus 4pt minus 2pt}{0pt plus 2pt minus 2pt}
+\titlespacing\subsubsection{0pt}{4pt plus 4pt minus 2pt}{0pt plus 2pt minus 2pt}
+\usepackage{a4wide}
+\usepackage{siunitx}
+\usepackage{textcomp}
+\usepackage{chemformula}
+\usepackage{float}
+\usepackage{newfloat}
+\usepackage{amsmath, amssymb, amsfonts, amsthm}
+\usepackage{subcaption}
+\usepackage{acronym}
+\usepackage{wrapfig}
+\usepackage{url}
+\usepackage[export]{adjustbox}
+\usepackage{lettrine}
+\usepackage{caption}
+\usepackage[font={it}]{caption}
+\usepackage[nottoc]{tocbibind}
+\usepackage[toc,page]{appendix}
+\usepackage{verbatim}
+\usepackage{hyperref}
+\usepackage{cleveref}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{afterpage}
+\usepackage{natbib}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{booktabs}
+\usepackage{dirtytalk}
+\usepackage{blindtext}
+% \usepackage{parskip} % for no indentation, use \par to create paragraphs
+
+% two column text
+\usepackage{multicol} % do not use in main.tex
+\setlength{\columnsep}{1cm}
+
+% for Matlab, python Codes 
+\usepackage[framed,numbered,autolinebreaks,useliterate]{Rest/mcode}
+\renewcommand{\lstlistingname}{Code}
+
+% bibliography now called references
+\renewcommand\bibname{References} 
+
+% makes abstract not reset the page count
+\makeatletter
+\renewenvironment{abstract}{%
+  \if@twocolumn
+    \section*{\abstractname}%
+  \else
+    \small
+    \begin{center}%
+      {\bfseries \abstractname\vspace{-.5em}\vspace{\z@}}%
+    \end{center}%
+    \quotation
+  \fi}
+  {\if@twocolumn\else\endquotation\fi}
+\makeatother
+
+%---------------------------------------------%
+% Optional different coding style using minted
+% the style used for python code files
+\usepackage{minted} 
+\usemintedstyle{vs} 
+\definecolor{LightGray}{gray}{0.95} 
+\renewcommand{\theFancyVerbLine}{\sffamily
+\textcolor{black}{\scriptsize
+\oldstylenums{\arabic{FancyVerbLine}}}}
+
+% extra code style modifications
+\setminted{    
+    bgcolor=LightGray,
+    frame=single,
+    framesep=7mm,
+    breaklines=true,                 
+    numbers=left,                    
+    numbersep=-17pt,   
+    showspaces=false, 
+    baselinestretch=1.1,
+    fontsize=\footnotesize,
+}

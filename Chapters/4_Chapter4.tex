@@ -1,0 +1,39 @@
+\chapter{Tables in \LaTeX} \label{ch:tables}
+
+\section{Link for easier tables}
+We can make beautiful tables, however making tables directly in \LaTeX can be very annoying. So we use an online tool. I prefer \url{https://www.latex-tables.com/}. But search on Google for \say{Latex table generator} and you can find many more. 
+
+\section{Example table}
+In \autoref{tab:1} we have used the \textbf{Booktabs} style, which places a bold horizontal line at the top and bottom of the table.
+
+\begin{table}[!htb]
+\centering
+\caption{This is a table caption. It is supposed to be placed \textbf{above} the table, instead of underneath like for figures.}
+\label{tab:1}
+\begin{tabular}{lccc} 
+\hline
+ & \begin{tabular}[c]{@{}c@{}}\textbf{estimated}\\degrees\end{tabular} & \begin{tabular}[c]{@{}c@{}}\textbf{true}\\degrees\end{tabular} & \begin{tabular}[c]{@{}c@{}}\textbf{error}\\degrees\end{tabular} \\ 
+\hline
+forward 1m & 149.91 & 150.44 & 0.53 \\
+right 1m & 166.96 & 160.45 & -6.51 \\
+circle 0.10m radius & 154.93 & 153.99 & -0.96 \\
+circle 0.30m radius & 153.93 & 153.91 & -0.02 \\
+circle 0.50m radius & 153.93 & 153.93 & 0.00 \\
+circle 0.70m radius & 138.89 & 153.89 & 15.00 \\
+circle 0.90m radius & 145.91 & 153.86 & 7.95 \\
+\hline
+\end{tabular}
+\end{table}
+
+
+If you type \say{$\setminus$begin{table}}, you will obtain a simple template. Some placeholder values have been placed in \autoref{tab:my_label} for this example. Do note, the template overleaf gives places the caption below the table, so change this yourself! You can also change the placement of the table using [h], [H], etc. the same as for figures, or use [!htb] which works very well in almost al cases.
+
+\begin{table}[!htb]
+    \caption{This table contains 4 numbers.}
+    \label{tab:my_label}
+    \centering
+    \begin{tabular}{c|c}
+       1 & 2 \\
+       3 & 4
+    \end{tabular}
+\end{table}

@@ -1,0 +1,41 @@
+\documentclass[a4paper, 11pt, twoside]{report} 
+% Template by Alex Sloot
+
+\usepackage{silence}                    % silence package warning
+\WarningFilter{latex}{You have requested package}
+
+\usepackage{Rest/Paper}                 % use packages
+
+\begin{document}                        % START DOCUMENT
+
+% \include{Rest/1_Titlepage}              % title page 
+\include{Rest/1_Titlepage2} for an alternative layout
+
+\pagenumbering{Roman}                   % change page numbers
+
+\afterpage{\null\newpage}               % empty page
+
+\include{Rest/2_Abstract}               % abstract
+
+\afterpage{\null\newpage}               % empty page
+
+\tableofcontents                        % table of contents
+
+\pagenumbering{arabic}                  % change page numbers
+
+\include{Chapters/1_Chapter1}           % content
+
+\include{Chapters/2_Chapter2}           % content
+
+\include{Chapters/3_Chapter3}           % content
+
+\include{Chapters/4_Chapter4}           % content
+
+\include{Rest/3_Conclusion}             % conclusion
+
+\newpage\bibliographystyle{apalike}     % bibliography style
+\bibliography{References}               % 'references' for Mendeley
+
+\include{Rest/4_Appendix}               % appendix
+
+\end{document}                          % END DOCUMENT

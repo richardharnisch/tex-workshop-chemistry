@@ -1,0 +1,45 @@
+\chapter{Code in \LaTeX} \label{ch:Chapter3Name}
+
+\section{Section 1}
+\blindtext[1]
+\cite{test}. 
+
+\subsection{lstlisting to input code}
+text, reference \autoref{code:test} and \autoref{code:test2}. Note it will be referred to as \say{Code x}. This is because we have renamed this in the Rest/Paper.sty document. Normally we would get \say{Listing x}. If you prefer this remove \say{\renewcommand{\lstlistingname}{Code}} from the Rest/Paper.sty file.
+\cite{test}. 
+
+\lstinputlisting[language=Matlab, caption={code example for Matlab}, label={code:test}]{Codes/a_corr.m}
+
+\lstinputlisting[language=Python, caption={code example for Python}, label={code:test2}]{Codes/fib.py}
+
+Here we also have a list of our codes. But this will automatically go to the next page.
+\listoflistings
+
+\subsection{minted to input code}
+We can also use \say{minted} to input our code. Everything works basically the same, it just looks different. However, using minted like this, we do not have the option to assign a label and refer to our code as before.
+
+\inputminted[label=minted code example with matlab]{matlab}{Codes/a_corr.m}
+
+\inputminted[label=minted code example with python]{python}{Codes/fib.py}
+
+If you do want to refer to the code using Minted, you have to put the code in this file directly (instead of in the Code folder). Now we can refer to \ref{listing:3}, however, note now we cannot use the \say{autoref} function, we only obtain the number.
+
+\begin{listing}[!ht]
+\begin{minted}{python}
+def foo(n): #recursive function to determine a Fibonacci number
+    fib = 0
+    if n >= 2:
+        n_min_one = foo(n-1)
+        n_min_two = foo(n-2)
+    else:
+        n_min_one = 1
+        n_min_two = 0
+    fib = n_min_one + n_min_two
+    return fib #return Fibonacci number
+\end{minted}
+\caption{Another example of python code with minted}
+\label{listing:3}
+\end{listing}
+
+\subsection{Conclusion}
+Many options exist to insert code using \LaTeX, choose whichever one you like or find easiest to use.

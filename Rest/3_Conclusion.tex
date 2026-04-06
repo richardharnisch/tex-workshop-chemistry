@@ -1,0 +1,17 @@
+\chapter*{Conclusion} \label{ch:Conclusion}
+% add to table of contents without chapter number
+\addcontentsline{toc}{chapter}{Conclusion}
+% "\phantomsection" is needed here for hyperref to function properly
+
+Here we give an example of how to create sections without a number, but still add them to the table of contents. 
+
+\phantomsection
+\section*{Section 1}
+\blindtext[1]
+\addcontentsline{toc}{section}{Section 1}
+
+\phantomsection
+\subsection*{Subsection 1}
+\blindtext[1]
+\addcontentsline{toc}{subsection}{Subsection 1}
+

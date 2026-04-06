@@ -1,0 +1,22 @@
+\begin{appendices}
+
+\addtocontents{toc}{\protect\setcounter{tocdepth}{1}}
+\makeatletter
+\addtocontents{toc}{
+  \begingroup
+  \let\protect\l@chapter\protect\l@section
+  \let\protect\l@section\protect\l@subsection
+}
+\makeatother
+
+% First chapter of appendices
+\chapter{Title of appendix A} \label{appendix_1:}    
+\input{Appendices/1_Appendix1}
+\clearpage
+
+% add more chapters by:
+% \chapter{Title of appendix B} \label{appendix_2:}     
+% \input{Appendices/2_Appendix2}
+% \clearpage
+
+\end{appendices}

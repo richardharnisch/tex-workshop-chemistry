@@ -1,0 +1,44 @@
+\chapter{Multiple figures} \label{ch:Chapter2Name}
+
+\section{Section 1}
+\blindtext[1] 
+\cite{test}
+
+\subsection{Referring to the figure}
+Here we reference figure \ref{fig:2a} and \ref{fig:2b}, but we can also reference like this: \autoref{fig:2}. 
+
+%Figures
+\begin{figure}[h]
+  \centering
+  \begin{subfigure}[b]{0.49\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{Images/RUGLogo.png}
+    \caption{Left figure}
+    \label{fig:2a}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.49\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{Images/RUGLogo.png}
+    \caption{Right figure}
+    \label{fig:2b}
+  \end{subfigure}
+  \caption{Two figures next to each other.}
+  \label{fig:2}
+\end{figure}
+
+However, we can also make multiple figures next to each other and underneath each other using \textit{subfloats}. This syntax might be a bit more confusing, but is shorter to write.
+
+\begin{figure*}[!htb]
+  \centering
+  \subfloat[Caption 1, full textwidth]{\includegraphics[width=\textwidth]{Images/RUGLogo.png}}
+  \hfil
+  \subfloat[Caption 2, 0.5 textwidth]{\includegraphics[width=0.5\textwidth]{Images/RUGLogo.png}}
+  \hfil
+  \subfloat[Caption 3, 0.5 textwidth]{\includegraphics[width=0.5\textwidth]{Images/RUGLogo.png}}
+  \hfil
+  \subfloat[Caption 4, width in inches and also a simple equation $c = \sqrt{a^2+b^2}$]{\includegraphics[width=2.5in]{Images/RUGLogo.png}}
+  \hfil
+  \subfloat[Caption 5, width in centimetres. Actually, we can place as much text as we want, we can even manually use enters \\\\ as you see here]{\includegraphics[width=7cm]{Images/RUGLogo.png}}
+  \caption{The overall caption for the five figures shown. Make sure to make this as elaborate as possible. Without any context outside of the figure, people should understand the figure.}
+  \label{fig:sim_2D3D}
+\end{figure*}
