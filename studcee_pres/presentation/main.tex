@@ -56,31 +56,31 @@
 }
 
 \title{\LaTeX{}-Workshop}
-\author{Presented by: \\Diana Todoran}
+\author{Presented by: \\Gijs Peletier \& Richard Harnisch}
 \institute[StudCee]{StudCee}
 \date{\today}
 
 \begin{document}
 {\usebackgroundtemplate{
-        \vbox to 1.5\paperheight{\vfil{\hfil{ %! chktex 1
-		\begin{minipage}{0.475\textwidth}
-       	\begin{tikzpicture}
-			\node[opacity=0.2] {\includegraphics[width=\textwidth]{studcee_logo}};
-		\end{tikzpicture}
-		\end{minipage}
-		}
-		\begin{minipage}{0.48\textwidth}
-		\begin{tikzpicture}
-			\node[opacity=0.2] {\includegraphics[width=\textwidth]{cover_logo}};
-		\end{tikzpicture}
-		\end{minipage}}
-		\hfil\vfil}
-    }
-    \begin{frame}
-        \maketitle
-        $~$ \\
-        \raggedleft \scriptsize{Credits slides: Ren\'e Mellema and Nico Steegman}
-    \end{frame}
+    \vbox to 1.5\paperheight{\vfil{\hfil{ %! chktex 1
+                \begin{minipage}{0.475\textwidth}
+                    \begin{tikzpicture}
+                        \node[opacity=0.2] {\includegraphics[width=\textwidth]{studcee_logo}};
+                    \end{tikzpicture}
+                \end{minipage}
+            }
+            \begin{minipage}{0.48\textwidth}
+                \begin{tikzpicture}
+                    \node[opacity=0.2] {\includegraphics[width=\textwidth]{cover_logo}};
+                \end{tikzpicture}
+            \end{minipage}}
+        \hfil\vfil}
+}
+\begin{frame}
+    \maketitle
+    $~$ \\
+    \raggedleft \scriptsize{Credits slides: Ren\'e Mellema and Nico Steegman}
+\end{frame}
 }
 
 \begin{frame}
@@ -106,15 +106,15 @@
     \begin{itemize}
         \item Designed to focus on writing
         \item Text will be output as text
-            \begin{itemize}
-                \item White space is ignored (including newlines)
-                \item Empty line signifies end of paragraph
-                \item \LaTeX{} automagically does hyphenation and outlining
-                \item ``Magical'' characters:
+              \begin{itemize}
+                  \item White space is ignored (including newlines)
+                  \item Empty line signifies end of paragraph
+                  \item \LaTeX{} automagically does hyphenation and outlining
+                  \item ``Magical'' characters:
 
-                    \lstinline+# $ % ^ & _ { } ~ \+  %! chktex 14
-                \item Cannot use these in running text
-            \end{itemize}
+                        \lstinline+# $ % ^ & _ { } ~ \+  %! chktex 14
+                  \item Cannot use these in running text
+              \end{itemize}
         \item Comments start with a \%
     \end{itemize}
 \end{frame}
@@ -123,23 +123,23 @@
     \begin{itemize}
         \item Commands start with a \textbackslash:
 
-            \lstinline+\somecommand[optional]{required}+
+              \lstinline+\somecommand[optional]{required}+
         \item Groups start with \{ and end with \}
-            \begin{itemize}
-                \item Useful if command influences all following text
+              \begin{itemize}
+                  \item Useful if command influences all following text
 
-                    \lstinline+This {\bf text is bold} but this it not+
+                        \lstinline+This {\bf text is bold} but this it not+
 
-                    This {\bf text is bold} but this it not
-            \end{itemize}
+                        This {\bf text is bold} but this it not
+              \end{itemize}
         \item Environments start with \lstinline+\begin{envname}+ and end with
-                \lstinline+\end{envname}+
-            \begin{itemize}
-                \item Define new commands that only work in environment
-                \item Change flow of text
-                \item Introduce special elements (i.e. non-text) in
-                    document
-            \end{itemize}
+              \lstinline+\end{envname}+
+              \begin{itemize}
+                  \item Define new commands that only work in environment
+                  \item Change flow of text
+                  \item Introduce special elements (i.e. non-text) in
+                        document
+              \end{itemize}
     \end{itemize}
 \end{frame}
 
@@ -174,15 +174,15 @@
         \item There exist several \LaTeX{} editors
         \item We generally recommend using one of the following editors below
         \item Online editor:
-            \begin{itemize}
-                \item Overleaf (\url{www.overleaf.com}) \hspace{2pt} \textbf{recommended}
-            \end{itemize}
+              \begin{itemize}
+                  \item Overleaf (\url{www.overleaf.com}) \hspace{2pt} \textbf{recommended}
+              \end{itemize}
         \item Offline editors (all cross platform):
-        \begin{itemize}
-            \item Texmaker (\url{www.xm1math.net/texmaker})
-            \item TeXstudio (\url{www.texstudio.org})
-            \item TeXworks (\url{www.tug.org/texworks})
-        \end{itemize}
+              \begin{itemize}
+                  \item Texmaker (\url{www.xm1math.net/texmaker})
+                  \item TeXstudio (\url{www.texstudio.org})
+                  \item TeXworks (\url{www.tug.org/texworks})
+              \end{itemize}
     \end{itemize}
 \end{frame}
 
@@ -228,10 +228,10 @@
 \begin{frame}{Document Structure}
     \begin{itemize}
         \item Document consists of two parts:
-            \begin{itemize}
-                \item Preamble
-                \item Content
-            \end{itemize}
+              \begin{itemize}
+                  \item Preamble
+                  \item Content
+              \end{itemize}
         \item Further forces \LaTeX{}'s focus on content
     \end{itemize}
 \end{frame}
@@ -240,18 +240,18 @@
 \begin{frame}{The preamble}
     \begin{itemize}
         \item Set up for the document
-            \begin{itemize}
-                \item Documentclass
-                \item Loading packages
-                \item Document wide settings
-                \item New commands/environments
-                \item Meta information (title, author, etc\ldots)
-            \end{itemize}
+              \begin{itemize}
+                  \item Documentclass
+                  \item Loading packages
+                  \item Document wide settings
+                  \item New commands/environments
+                  \item Meta information (title, author, etc\ldots)
+              \end{itemize}
         \item Allows us to change anything about the document
-            \begin{itemize}
-                \item Also paper size, margins, etc
-                \item After preamble no longer possible
-            \end{itemize}
+              \begin{itemize}
+                  \item Also paper size, margins, etc
+                  \item After preamble no longer possible
+              \end{itemize}
     \end{itemize}
 \end{frame}
 
@@ -259,20 +259,20 @@
     \begin{itemize}
         \item Every document has document class
         \item Specifies general settings like paper size, margins, headers,
-            footers, etc\ldots
+              footers, etc\ldots
         \item Is set by \lstinline+\documentclass+ command:
 
-            \lstinline+\documentclass[a4paper, 10pt]{article}+
+              \lstinline+\documentclass[a4paper, 10pt]{article}+
         \item Different types of document classes:
-            \begin{itemize}
-                \item article
-                \item beamer
-                \item report
-                \item book
-                \item letter
-                \item cover-article
-                \item \ldots
-            \end{itemize}
+              \begin{itemize}
+                  \item article
+                  \item beamer
+                  \item report
+                  \item book
+                  \item letter
+                  \item cover-article
+                  \item \ldots
+              \end{itemize}
     \end{itemize}
 \end{frame}
 
@@ -283,25 +283,25 @@
         \item Extends \LaTeX{}'s usual capabilities.
         \item Imported with \lstinline+\usepackage+
 
-            \lstinline+\usepackage[hidelinks]{hyperref}+
+              \lstinline+\usepackage[hidelinks]{hyperref}+
         \item Contains all kinds of stuff:
-            \begin{itemize}
-                \item \lstinline+hyperref+ for making hyperlinks
-                \item \lstinline+graphicx+ for importing images
-                \item \lstinline+amsmath+ for even better math support
-                \item \lstinline+colorx+ for changing colors
-                \item \lstinline+tikz+ for drawing figures in \LaTeX{}
-                \item \lstinline+coffee+ for adding coffee stains
-                \item \lstinline+enigma+ for confusing the allied forces
-            \end{itemize}
+              \begin{itemize}
+                  \item \lstinline+hyperref+ for making hyperlinks
+                  \item \lstinline+graphicx+ for importing images
+                  \item \lstinline+amsmath+ for even better math support
+                  \item \lstinline+colorx+ for changing colors
+                  \item \lstinline+tikz+ for drawing figures in \LaTeX{}
+                  \item \lstinline+coffee+ for adding coffee stains
+                  \item \lstinline+enigma+ for confusing the allied forces
+              \end{itemize}
     \end{itemize}
 \end{frame}
 
 \begin{frame}[fragile]{Setting settings}
     \begin{itemize}
         \item Settings depend on packages used and needs of author
-        \item \lstinline+\title{}+, \lstinline+\author{}+ and 
-            \lstinline+\date{}+ are quite common
+        \item \lstinline+\title{}+, \lstinline+\author{}+ and
+              \lstinline+\date{}+ are quite common
     \end{itemize}
 \end{frame}
 
@@ -309,14 +309,14 @@
 \begin{frame}[fragile]{The content}
     \begin{itemize}
         \item Content goes into document environment:
-            \begin{lstlisting}
+              \begin{lstlisting}
 \begin{document}
     ...
 \end{document}
             \end{lstlisting}
         \item Normally starts with a title: \lstinline+\maketitle+
-        \item For longer documents a table of contents: 
-            \lstinline+\tableofcontents+
+        \item For longer documents a table of contents:
+              \lstinline+\tableofcontents+
     \end{itemize}
 \end{frame}
 
@@ -324,16 +324,16 @@
     \begin{itemize}
         \item Layout is done by \LaTeX{}, structure is important
         \item Different kinds of headings:
-            \begin{itemize}
-                \item \lstinline+\chapter+ only in book and report
-                \item \lstinline+\section+
-                \item \lstinline+\subsection+
-                \item \lstinline+\subsubsection+
-                \item \lstinline+\paragraph+ typeset in running text
-                \item \lstinline+\subparagraph+
-                \item Also a starred version to disable numbering:
-                    \lstinline+\section*{}+
-            \end{itemize}
+              \begin{itemize}
+                  \item \lstinline+\chapter+ only in book and report
+                  \item \lstinline+\section+
+                  \item \lstinline+\subsection+
+                  \item \lstinline+\subsubsection+
+                  \item \lstinline+\paragraph+ typeset in running text
+                  \item \lstinline+\subparagraph+
+                  \item Also a starred version to disable numbering:
+                        \lstinline+\section*{}+
+              \end{itemize}
         \item \lstinline+\appendix+ changes number to appendix numbering
     \end{itemize}
 \end{frame}
@@ -347,9 +347,9 @@
         \item Sometimes you want to force a space or newline
         \item For space, the non-breaking space: \textasciitilde{}
         \item For newline: \textbackslash\textbackslash{}
-            \begin{itemize}
-                \item Warning! This does \emph{not} start a new paragraph
-            \end{itemize}
+              \begin{itemize}
+                  \item Warning! This does \emph{not} start a new paragraph
+              \end{itemize}
     \end{itemize}
 \end{frame}
 
@@ -358,18 +358,18 @@
         \column{0.37\textwidth}
         \begin{itemize}
             \item Changing text size:
-                \begin{itemize}
-                    \item \lstinline+\tiny+
-                    \item \lstinline+\scriptsize+
-                    \item \lstinline+\footnotesize+
-                    \item \lstinline+\small+
-                    \item \lstinline+\normalsize+
-                    \item \lstinline+\large+
-                    \item \lstinline+\Large+
-                    \item \lstinline+\LARGE+
-                    \item \lstinline+\huge+
-                    \item \lstinline+\Huge+
-                \end{itemize}
+                  \begin{itemize}
+                      \item \lstinline+\tiny+
+                      \item \lstinline+\scriptsize+
+                      \item \lstinline+\footnotesize+
+                      \item \lstinline+\small+
+                      \item \lstinline+\normalsize+
+                      \item \lstinline+\large+
+                      \item \lstinline+\Large+
+                      \item \lstinline+\LARGE+
+                      \item \lstinline+\huge+
+                      \item \lstinline+\Huge+
+                  \end{itemize}
         \end{itemize}
         \column{0.5\textwidth}
         \begin{itemize}
@@ -385,11 +385,11 @@
 \begin{frame}[fragile]{Lists}
     \begin{itemize}
         \item Three kinds of list:
-            \begin{enumerate}
-                \item \lstinline+itemize+ bulleted list like the outer list
-                \item \lstinline+enumerate+ numbered list like this one
-                \item \lstinline+description+ list of definitions
-            \end{enumerate}
+              \begin{enumerate}
+                  \item \lstinline+itemize+ bulleted list like the outer list
+                  \item \lstinline+enumerate+ numbered list like this one
+                  \item \lstinline+description+ list of definitions
+              \end{enumerate}
         \item All lists are environments
         \item New items are added with \lstinline+\item+
         \item Lists can be nested up to five levels deep
@@ -405,15 +405,15 @@
         \item Get number with \lstinline+\ref{name}+
         \item Get the page number of object with \lstinline+\pageref{name}+
         \item (With \texttt{hyperref}) Get name, number, and link
-            \lstinline+\autoref{name}+
+              \lstinline+\autoref{name}+
         \item Can be used to refer to:
-            \begin{itemize}
-                \item Sections, subsections, etc\ldots
-                \item Items in an enumeration
-                \item Equations
-                \item Figures
-                \item Tables
-            \end{itemize}
+              \begin{itemize}
+                  \item Sections, subsections, etc\ldots
+                  \item Items in an enumeration
+                  \item Equations
+                  \item Figures
+                  \item Tables
+              \end{itemize}
     \end{itemize}
 \end{frame}
 
@@ -428,10 +428,10 @@
         \item \LaTeX{} moves floats through document for optimal placement
         \item Works good for images, tables, pseudocode, and other blocks
         \item Allows us to enrich content
-            \begin{itemize}
-                \item Captions
-                \item Subfigures
-            \end{itemize}
+              \begin{itemize}
+                  \item Captions
+                  \item Subfigures
+              \end{itemize}
         \item Can also define our own floats
     \end{itemize}
 \end{frame}
@@ -440,44 +440,44 @@
     \begin{itemize}
         \item \LaTeX{} tends to move floats all over the place
         \item Two ways to control floats:
-            \begin{itemize}
-                \item Placement specifiers
-                    \begin{onlyenv}<2>
-                    \begin{itemize}
-                        \item Optional argument to the float
-                        \item Does not always work ``correctly''
-                        \item Pictures still float
-                        \item \texttt{h} I want my float here
-                        \item \texttt{H} Force float here (requires
-                            \texttt{float} package)
-                        \item \texttt{t} I want my float at the top of the page
-                        \item \texttt{b} I want my float at the bottom of
-                            the page
-                        \item \texttt{!} I really want this
-                        \item \texttt{h!} tells \LaTeX{} you really want
-                            the float here
-                    \end{itemize}
-                \end{onlyenv}
-                \item Float barriers
-                    \begin{onlyenv}<3>
-                        \begin{itemize}
-                            \item Stops floats from moving past a point
-                            \item Useful to keep floats within section
-                            \item Require the \texttt{placeins} package
-                            \item Created with command \lstinline+\FloatBarrier+
-                            \item Automatic float barriers at sections:
+              \begin{itemize}
+                  \item Placement specifiers
+                        \begin{onlyenv}<2>
+                            \begin{itemize}
+                                \item Optional argument to the float
+                                \item Does not always work ``correctly''
+                                \item Pictures still float
+                                \item \texttt{h} I want my float here
+                                \item \texttt{H} Force float here (requires
+                                      \texttt{float} package)
+                                \item \texttt{t} I want my float at the top of the page
+                                \item \texttt{b} I want my float at the bottom of
+                                      the page
+                                \item \texttt{!} I really want this
+                                \item \texttt{h!} tells \LaTeX{} you really want
+                                      the float here
+                            \end{itemize}
+                        \end{onlyenv}
+                  \item Float barriers
+                        \begin{onlyenv}<3>
+                            \begin{itemize}
+                                \item Stops floats from moving past a point
+                                \item Useful to keep floats within section
+                                \item Require the \texttt{placeins} package
+                                \item Created with command \lstinline+\FloatBarrier+
+                                \item Automatic float barriers at sections:
 
-                                \lstinline+\usepackage[section]{placeins}+
-                        \end{itemize}
-                    \end{onlyenv}
-            \end{itemize}
+                                      \lstinline+\usepackage[section]{placeins}+
+                            \end{itemize}
+                        \end{onlyenv}
+              \end{itemize}
         \item For reports: pictures at end is fine, lots of empty space is
-            not
+              not
     \end{itemize}
 \end{frame}
 
 \begin{frame}[fragile]{Working with images}
-            \begin{lstlisting}
+    \begin{lstlisting}
 \begin{figure}[htb]
     \includegraphics[width=\textwidth]{path/to/file}
     \caption{Something sensible about this image}
@@ -525,12 +525,12 @@
                 \hline%!chktex 44
             \end{tabular}
         \end{table}
-            Three useful sites:
-            \begin{itemize}
-                \item \url{en.wikibooks.org/wiki/LaTeX/Tables}
-                \item \url{www.latex-tables.com}
-                \item \url{www.tablesgenerator.com}
-            \end{itemize}
+        Three useful sites:
+        \begin{itemize}
+            \item \url{en.wikibooks.org/wiki/LaTeX/Tables}
+            \item \url{www.latex-tables.com}
+            \item \url{www.tablesgenerator.com}
+        \end{itemize}
     \end{columns}
 \end{frame}
 
@@ -540,22 +540,22 @@
     \begin{itemize}
         \item \LaTeX{} knows the best way to position floats
         \item Bunch of pictures at the end of report not bad
-            \begin{itemize}
-                \item Graders know why
-                \item Large sections of white space are more annoying
-            \end{itemize}
+              \begin{itemize}
+                  \item Graders know why
+                  \item Large sections of white space are more annoying
+              \end{itemize}
         \item For figures: changing the width so two pictures fit on page
         \item Text on both sides of float help with positioning
-            \begin{itemize}
-                \item More text $\Rightarrow$ more things for \LaTeX{} to
-                    play with
-            \end{itemize}
+              \begin{itemize}
+                  \item More text $\Rightarrow$ more things for \LaTeX{} to
+                        play with
+              \end{itemize}
         \item Float barriers can help if document is broken up in logical
-            sections
-            \begin{itemize}
-                \item E.G. all the figures for exercise 1 stay with
-                    exercise 1
-            \end{itemize}
+              sections
+              \begin{itemize}
+                  \item E.G. all the figures for exercise 1 stay with
+                        exercise 1
+              \end{itemize}
     \end{itemize}
 \end{frame}
 
@@ -565,121 +565,121 @@
     \begin{itemize}
         \item Most of the following commands need the package amsmath
         \item \lstinline+$ ... $+ or \lstinline+\( ... \)+ short hand for inline
-            math
-		\item \lstinline+$$ ... $$+ or \lstinline+\[ ... \]+ short hand for display math mode
-		\item The equation environment displays numbered equations
+              math
+        \item \lstinline+$$ ... $$+ or \lstinline+\[ ... \]+ short hand for display math mode
+        \item The equation environment displays numbered equations
         \item The align environment is used to arrange equations over multiple
-            lines. \lstinline+\\+ denotes a new line and \lstinline+&+ indicates
-            a point where the equations should be aligned
+              lines. \lstinline+\\+ denotes a new line and \lstinline+&+ indicates
+              a point where the equations should be aligned
         \item Spaces are derived from the expressions, \lstinline+$2-3$+ and
-            \lstinline+$2 - 3$+ both print to $2-3$ %! chktex 8
-	\end{itemize}
+              \lstinline+$2 - 3$+ both print to $2-3$ %! chktex 8
+    \end{itemize}
 \end{frame}
 
 \begin{frame}[fragile]{Common commands}
-	\begin{itemize}
-		\item \lstinline|\times| is $\times$, \lstinline|\cdot| is $\cdot$
+    \begin{itemize}
+        \item \lstinline|\times| is $\times$, \lstinline|\cdot| is $\cdot$
         \item \lstinline|\sqrt{a}| is $\sqrt{a}$
-		\item \lstinline|\frac{a}{b}| is $\frac{a}{b}$
-		\item \lstinline+a^{b}+ is $a^b$
-		\item \lstinline+a_{b}+ is $a_b$
-            \item All greek letters are available. \lstinline+\Delta+ is
-                $\Delta$ and \lstinline+\delta+ is $\delta$
+        \item \lstinline|\frac{a}{b}| is $\frac{a}{b}$
+        \item \lstinline+a^{b}+ is $a^b$
+        \item \lstinline+a_{b}+ is $a_b$
+        \item All greek letters are available. \lstinline+\Delta+ is
+              $\Delta$ and \lstinline+\delta+ is $\delta$
         \item Text can be added to the equation with \lstinline+\text{}+.
-            \lstinline+2 - 3 \text{ hallo } 3 \times 4+ is $2 - 3 \text{ hallo }
-            3 \times{} 4$
-	\end{itemize}
+              \lstinline+2 - 3 \text{ hallo } 3 \times 4+ is $2 - 3 \text{ hallo }
+                  3 \times{} 4$
+    \end{itemize}
 \end{frame}
 
 \begin{frame}[fragile]{Operators}
-	\begin{itemize}
-		\item \lstinline+\cos (2\pi)+ is $\cos(2\pi)$
-                \item \lstinline+\sin^2 (2\theta)+ is $\sin^2(2\theta)$
-		\item \lstinline+\tan (2)+ is $\tan(2)$
+    \begin{itemize}
+        \item \lstinline+\cos (2\pi)+ is $\cos(2\pi)$
+        \item \lstinline+\sin^2 (2\theta)+ is $\sin^2(2\theta)$
+        \item \lstinline+\tan (2)+ is $\tan(2)$
         \item \lstinline+\lim_{x \to \infty} \exp(-x) = 0+ is
-            $\lim_{x \to\infty} \exp(-x) = 0$
-		\item \lstinline+x \equiv a \pmod{b}+ is $x \equiv{} a \pmod{b}$
-		\item \url{https://en.wikibooks.org/wiki/LaTeX/Mathematics} lists more commands
+              $\lim_{x \to\infty} \exp(-x) = 0$
+        \item \lstinline+x \equiv a \pmod{b}+ is $x \equiv{} a \pmod{b}$
+        \item \url{https://en.wikibooks.org/wiki/LaTeX/Mathematics} lists more commands
         \item \url{detexify.kirelabs.org} can identify a latex symbol from a drawing
     \end{itemize}
 \end{frame}
 
- \section{Source Listings}
- \begin{frame}[fragile]{Source Code}
-     \begin{itemize}
-         \item \LaTeX{} can be used to format source code
-             \begin{itemize}
-                 \item Requires \lstinline+listings+ package
-             \end{itemize}
-         \item Can include (parts of) document, snippets, and lines
-         \item Automatic syntax recognition
-         \item Allows different styles
-             \begin{itemize}
-                 \item Most languages have settings online
-             \end{itemize}
-         \item \lstinline+\lstinputlisting{file}+ to include file
-         \item \lstinline+\begin{lstlisting}+ and \lstinline+\end{lstlisting}+ for
-             snippets
-         \item \lstinline+\lstinline{code}+ for inline code
-     \end{itemize}
- \end{frame}
+\section{Source Listings}
+\begin{frame}[fragile]{Source Code}
+    \begin{itemize}
+        \item \LaTeX{} can be used to format source code
+              \begin{itemize}
+                  \item Requires \lstinline+listings+ package
+              \end{itemize}
+        \item Can include (parts of) document, snippets, and lines
+        \item Automatic syntax recognition
+        \item Allows different styles
+              \begin{itemize}
+                  \item Most languages have settings online
+              \end{itemize}
+        \item \lstinline+\lstinputlisting{file}+ to include file
+        \item \lstinline+\begin{lstlisting}+ and \lstinline+\end{lstlisting}+ for
+              snippets
+        \item \lstinline+\lstinline{code}+ for inline code
+    \end{itemize}
+\end{frame}
 
- \begin{frame}[fragile]{Settings}
-     \lstinline+listings+ offers several settings for each command, can be set
-     globally using \lstinline+\lstset{}+
-     \begin{tabularx}{\textwidth}{lcX}
-         Setting & Values & Explanation \\
-         breaklines & true/false & If code should be broken over
-         lines \\
-         breakatwhitespace & true/false & If code can only break at
-         whitespace \\
-         language & string & The language the code is written in
-         \\
-         numbers & none/left/right & Where to position the line
-         numbers \\
-         stepnumber & number & The numbers in between two steps \\
-     \end{tabularx}
- \end{frame}
+\begin{frame}[fragile]{Settings}
+    \lstinline+listings+ offers several settings for each command, can be set
+    globally using \lstinline+\lstset{}+
+    \begin{tabularx}{\textwidth}{lcX}
+        Setting           & Values          & Explanation                         \\
+        breaklines        & true/false      & If code should be broken over
+        lines                                                                     \\
+        breakatwhitespace & true/false      & If code can only break at
+        whitespace                                                                \\
+        language          & string          & The language the code is written in
+        \\
+        numbers           & none/left/right & Where to position the line
+        numbers                                                                   \\
+        stepnumber        & number          & The numbers in between two steps    \\
+    \end{tabularx}
+\end{frame}
 
 \section{Bibtex}
 \begin{frame}[fragile]{Bibtex}
     Useful package for referencing sources.
-	\begin{itemize}
-		\item Stores references in seperate ".bib" file.
-        \begin{itemize}
-            \item Set style with \lstinline+\bibliographystyle{plain}+
-            \item Include bib file with \lstinline+\bibliography{filename}+
-            \item These should be placed in this order at the location 
-                    you want the reference list to be printed
-        \end{itemize}
-		\item \lstinline+\cite{}+ to cite the refrerences in the bib file
+    \begin{itemize}
+        \item Stores references in seperate ".bib" file.
+              \begin{itemize}
+                  \item Set style with \lstinline+\bibliographystyle{plain}+
+                  \item Include bib file with \lstinline+\bibliography{filename}+
+                  \item These should be placed in this order at the location
+                        you want the reference list to be printed
+              \end{itemize}
+        \item \lstinline+\cite{}+ to cite the refrerences in the bib file
         \item More information at
-            \url{https://en.wikibooks.org/wiki/LaTeX/Bibliography_Management}.
+              \url{https://en.wikibooks.org/wiki/LaTeX/Bibliography_Management}.
     \end{itemize}
 \end{frame}
 
 \section{Other useful packages}
 \begin{frame}[fragile]{General}
     \begin{tabular}{lp{7cm}}
-        Package & Description \\
-        \lstinline+enumitem+ & Changes the symbols used in enumerations \\
-        \lstinline+babel+ & For writing text in languages that are not English \\
-        \lstinline=fancyhdr= & For making headers and footers \\
-        \lstinline+tikz+ & For the creation of drawings in \LaTeX{} \\
-        \lstinline+moderncv+ & For making a r\'esum\'e \\
+        Package              & Description                                        \\
+        \lstinline+enumitem+ & Changes the symbols used in enumerations           \\
+        \lstinline+babel+    & For writing text in languages that are not English \\
+        \lstinline=fancyhdr= & For making headers and footers                     \\
+        \lstinline+tikz+     & For the creation of drawings in \LaTeX{}           \\
+        \lstinline+moderncv+ & For making a r\'esum\'e                            \\
     \end{tabular}
 \end{frame}
 
 \begin{frame}[fragile]{Linguistics}
     \begin{tabular}{ll}
-        Package & Description \\
-        \lstinline+tipa+ & For symbols from the IPA \\
-        \lstinline+qtree+ & For drawing (syntactic) trees \\
+        Package                & Description                                         \\
+        \lstinline+tipa+       & For symbols from the IPA                            \\
+        \lstinline+qtree+      & For drawing (syntactic) trees                       \\
         \lstinline+tikz-qtree+ & For drawing (syntactic) trees with \lstinline+tikz+
         \\
-        \lstinline+gb4e+ & For glosses and the likes \\
-        \lstinline+phonrule+ & For phonological rules \\
-        \lstinline+lplfitch+ & For typesetting natural deduction proofs \\
+        \lstinline+gb4e+       & For glosses and the likes                           \\
+        \lstinline+phonrule+   & For phonological rules                              \\
+        \lstinline+lplfitch+   & For typesetting natural deduction proofs            \\
     \end{tabular}
 \end{frame}
 

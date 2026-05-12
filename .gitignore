@@ -9,3 +9,7 @@
 *.out
 *.synctex.gz
 *.toc
+*.vrb
+*.snm
+*.nav
+*.synctex(busy)
