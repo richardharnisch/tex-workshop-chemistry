@@ -1,68 +1,91 @@
 \documentclass{article}
 
-\usepackage[utf8]{inputenc}
-\usepackage{graphicx}
 \usepackage[margin=1in]{geometry}
+\usepackage{graphicx}
 \usepackage{float}
-\usepackage{amsmath}
-\usepackage[style=apa]{biblatex}
-\addbibresource{references.bib}
-\usepackage{url}
-\usepackage{listings}
-\usepackage{color}
-\usepackage{blindtext}
+\usepackage{enumitem}
+\usepackage[version=4]{mhchem}
+\usepackage{siunitx}
 \usepackage{hyperref}
 
-\addbibresource{references.bib}
-\renewcommand{\div}{\;\mathsf{div}\;}
-
-\newcommand{\Algorithm}{\textbf{\textsf{algorithm}}$\;$}
-\newcommand{\Do}{\textbf{\textsf{do}}$\;$}
-\newcommand{\Downto}{\textbf{\textsf{downto}}$\;$}
-\newcommand{\Else}{\textbf{\textsf{else}}$\;$}
-\newcommand{\End}{\textbf{\textsf{end}}$\;$}
-\newcommand{\For}{\textbf{\textsf{for}$\;$}}
-\newcommand{\Forall}{\textbf{\textsf{forall}$\;$}}
-\newcommand{\If}{\textbf{\textsf{if}}$\;$}
-\newcommand{\Input}{\textbf{\textsf{input}}$\;$}
-\newcommand{\Result}{\textbf{\textsf{result}}$\;$}
-\newcommand{\Return}{\textbf{\textsf{return}}$\;$}
-\newcommand{\Then}{\textbf{\textsf{then}}$\;$}
-\newcommand{\To}{\textbf{\textsf{to}}$\;$}
-\newcommand{\Output}{\textbf{\textsf{output}}$\;$}
-\newcommand{\While}{\textbf{\textsf{while}}$\;$}
-\newcommand{\becomes}{$\leftarrow\;$}
-\newcommand{\Comment}[1]{$/*$#1$*/$}
-
-
-\definecolor{dkgreen}{rgb}{0,0.6,0}
-\definecolor{gray}{rgb}{0.5,0.5,0.5}
-\definecolor{mauve}{rgb}{0.58,0,0.82}
-
-\lstset{language=Python,
-  numbers=left,
-  stepnumber=1,    
-  firstnumber=1,
-  numberfirstline=true
-  aboveskip=5mm,
-  belowskip=5mm,
-  showstringspaces=false,
-  columns=flexible,
-  basicstyle={\small\ttfamily},
-  numberstyle=\tiny\color{gray},
-  keywordstyle=\color{blue},
-  commentstyle=\color{dkgreen},
-  stringstyle=\color{mauve},
-  breaklines=true,
-  breakatwhitespace=true
-  tabsize=3
-}
-
-\usepackage{pdfpages}
-\usepackage{parskip}
 \begin{document}
 
-\includepdf[pages = -]{"LaTeX Exercises for Workshop.pdf"}
+\begin{center}
+  {\Large LATEX Workshop\par}
+  \vspace{0.5em}
+  {\large Exercises\par}
+  \vspace{1.5em}
+  \today
+\end{center}
+
+\bigskip
+
+\section*{Install instructions}
+Overleaf is an online LaTeX editor, which can be found on:
+
+\begin{center}
+  \url{www.overleaf.com}
+\end{center}
+
+\section{Preamble}
+In Latex the package that you use and document-wide settings are placed in the preamble.
+
+\begin{enumerate}[label=\alph*)]
+  \item Add the document class article.
+  \item Add the package graphicx.
+  \item Add meta data for a title, author and date (the command \verb|\today| gets the current date).
+\end{enumerate}
+
+\section{Content}
+\begin{enumerate}[label=\alph*)]
+  \item Add the document environment.
+  \item Add a title to the document.
+  \item Create a numbered section named ``Formatting''.
+  \item Go to the link \url{http://randomtextgenerator.com/} and copy the random text in your section.
+  \item Format atleast one sentence to bold, one sentence to italic and change the size of two sentences.
+\end{enumerate}
+
+\newpage
+
+\section{Lists and references}
+\begin{enumerate}[label=\alph*)]
+  \item Create a section named ``Lists''.
+  \item Create a numbered list and write a sentence in the first item.
+  \item After the list add a reference to the first item made in b).
+\end{enumerate}
+
+\section{Floats}
+\begin{enumerate}[label=\alph*)]
+  \item Create a new section named ``Floats''
+  \item Create an image float.
+  \item Add a caption to the image.
+  \item Add a label to the image.
+  \item Restrict the float to the Floats section.
+\end{enumerate}
+
+\section{Tables}
+Create a table with containing a finished tic-tac-toe with a label and caption.
+
+\section{Chemistry in TeX}
+Chemistry writing needs consistent notation for formulas, reactions, units, and references.
+
+\begin{enumerate}[label=\alph*)]
+  \item Create a new section named ``Chemistry in TeX''.
+  \item Add the package ``mhchem''.
+  \item Add the package ``siunitx''.
+  \item Create chemical notation for a formula, an ion, and a reaction using \verb|\ce|.
+  \item Create quantities with units using \verb|\SI| and a number using \verb|\num|.
+  \item Put a reaction scheme, spectrum, or table in a float with a caption and label so it can be referenced later.
+\end{enumerate}
+
+\newpage
+
+\section{BibTeX}
+\begin{enumerate}
+  \item Go to \url{http://scholar.google.com} and search for any paper, e.g. ``BibTeX''.
+  \item Obtain at least two BibTeX references and save them into one file under the .bib extension.
+  \item Cite your references using the numeric style, which can be done using unsrt in bibliography style. For an example, see \url{www.bibtex.org/using}
+\end{enumerate}
 
 \end{document}
 
