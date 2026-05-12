@@ -12,10 +12,10 @@ Here we make a reference to figure \ref{fig:1}. We can also make the work \say{f
 
 %Figures
 \begin{figure}[h]
-\centering
-\includegraphics[width=0.8\textwidth]{Images/RUGLogo.png}
-\caption{Caption of the figure}
-\label{fig:1}
+    \centering
+    \includegraphics[width=0.8\textwidth]{Images/RUGLogo.png}
+    \caption{Caption of the figure}
+    \label{fig:1}
 \end{figure}
 
 \subsection{Refer to the appendix}
@@ -34,13 +34,13 @@ We can also do this equation inline, such as $c = \sqrt{a^2 + b^2}$. But this is
 
 In \autoref{eq:align1} we see a number, the first line has no number as we used \say{$\setminus nonumber$}, and the last equation is referenced separately as \autoref{eq:align2}
 \begin{align}
-    c = \sqrt{a^2 + b^2} \nonumber \\
+    c = \sqrt{a^2 + b^2} \nonumber      \\
     e^{i \pi} + 1 = 0 \label{eq:align1} \\
     h_{ij}(t) = \frac{1}{d_{ij}(t)} e^{\begin{pmatrix} \frac{-2\pi \sqrt{-1}}{\lambda} d_{ij}(t) \end{pmatrix}}
     \label{eq:align2}
 \end{align}
 
-Yo\zetau can also make things fancy using colours and arrows, such as shown in \autoref{eq:betaarrows}. However, make sure it is readable and doesn't become a circus. Here, we use the package \say{Tikz} to create the arrows. Effectively, we create an image and place this over our equation. This can become quite difficult to read in the code, so just mess around with things and use the internet.
+You can also make things fancy using colours and arrows, such as shown in \autoref{eq:betaarrows}. However, make sure it is readable and doesn't become a circus. Here, we use the package \say{Tikz} to create the arrows. Effectively, we create an image and place this over our equation. This can become quite difficult to read in the code, so just mess around with things and use the internet.
 
 % command for the arrows
 \newcommand{\tikzmark}[1]{\tikz[overlay,remember picture] \node (#1) {};}
@@ -64,7 +64,7 @@ Let's take a look at some options for brackets in formulas with matrices. A lot 
     \mathbf{a(\theta, \phi)} =
     \begin{bmatrix}
         e^{( \frac{2 \pi \rho_k \sqrt{-1}}{\lambda} )} \sin(\theta) \sin(\xi_k) \cos(\phi - \varphi_k) + \cos(\xi_k) \cos(\theta) \\
-        \vdots \\
+        \vdots                                                                                                                    \\
         e^{( \frac{2 \pi \rho_{l} \sqrt{-1}}{\lambda} )} \sin(\theta) \sin(\xi_{l}) \cos(\phi - \varphi_{l}) + \cos(\xi_{l}) \cos(\theta)
     \end{bmatrix}
     \label{eq:matrix}
@@ -92,19 +92,19 @@ Here is a summation example in \autoref{eq:Fij}, an integral in \autoref{eq:inte
 \end{equation}
 
 \begin{equation}
-\begin{aligned}
-    \min_{x} \quad & f(x) = x^\mathsf{T} 
-    \begin{bmatrix} 
-     2 & 0 \\ 0 & 4
-    \end{bmatrix}
-    x - \mathbb{E}[u]
-    \begin{bmatrix} 
-     8 & 16
-    \end{bmatrix}
-    x\\
-    \textrm{s.t.} \quad & x \geq 0\\
-\end{aligned}
-\label{eq:minimize}
+    \begin{aligned}
+        \min_{x} \quad      & f(x) = x^\mathsf{T}
+        \begin{bmatrix}
+            2 & 0 \\ 0 & 4
+        \end{bmatrix}
+        x - \mathbb{E}[u]
+        \begin{bmatrix}
+            8 & 16
+        \end{bmatrix}
+        x                                         \\
+        \textrm{s.t.} \quad & x \geq 0            \\
+    \end{aligned}
+    \label{eq:minimize}
 \end{equation}
 
 \subsection{Bonus Tip}
