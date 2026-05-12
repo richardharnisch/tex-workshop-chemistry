@@ -1,0 +1,527 @@
+\documentclass{beamer}
+
+\usepackage{graphicx}
+\usepackage{mathtools}
+\usepackage{amssymb}
+\usepackage{hyperref}
+
+\usetheme{default}
+\setbeamertemplate{navigation symbols}{}
+
+\title{An Introduction to \LaTeX}
+\author{Peter de Waal\\with material from Lennart Herlaar}
+\institute{Department of Information and Computing Sciences}
+\date{OIA \LaTeX{} workshop}
+
+\AtBeginSection[]
+{
+  \begin{frame}{Outline}
+    \tableofcontents[currentsection]
+  \end{frame}
+}
+
+\begin{document}
+
+\begin{frame}
+    \titlepage
+\end{frame}
+
+\begin{frame}{Outline}
+    \tableofcontents
+\end{frame}
+
+\section{Introduction}
+
+\subsection{What is \LaTeX{} and why?}
+
+\begin{frame}{Why \LaTeX?}
+    If you merely want to produce a passably good document --- something
+    acceptable and basically readable but not really beautiful --- a simpler
+    system will usually suffice.
+
+    \medskip
+    With \TeX{} the goal is to produce the finest quality.
+
+    \medskip
+    Donald E. Knuth
+\end{frame}
+
+\begin{frame}{\TeX{}}
+    \begin{itemize}
+        \item Program for typesetting technical text
+              \begin{itemize}
+                  \item Specialised in formulas
+                  \item Professional typographic design
+                  \item Freely available
+                  \item Stable
+              \end{itemize}
+        \item File format based on ASCII
+              \begin{itemize}
+                  \item Easy to send by e-mail
+                  \item Works on all systems
+              \end{itemize}
+        \item Easily extendable through macros
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{\LaTeX{}}
+    \begin{itemize}
+        \item Macro package for \TeX{}
+              \begin{itemize}
+                  \item Freely available
+                  \item Stable
+              \end{itemize}
+        \item Logical structure
+        \item Widely used in the exact sciences
+              \begin{itemize}
+                  \item Publishers require the use of their own style files with
+                        macros for their own layout
+              \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{\LaTeX{} workflow}
+    \begin{itemize}
+        \item Create ASCII file(s) with \LaTeX{} commands
+        \item Create a DVI file from this with \texttt{latex} (Device Independent)
+        \item Turn the DVI file into a PostScript file with \texttt{dvips} or a
+              PDF with \texttt{dvi2pdf}, or
+        \item Create a PDF file directly with \texttt{pdflatex}
+        \item Output can be viewed with
+              \begin{itemize}
+                  \item DVI: \texttt{xdvi}, \texttt{yap}
+                  \item PS: Ghostscript
+                  \item PDF: Acrobat Reader
+              \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{\LaTeX{} tools}
+    \begin{itemize}
+        \item There are several \TeX{} distributions
+        \item Any ASCII editor is fine
+        \item \LaTeX{} is not WYSIWYG
+        \item There are tools to make working with \LaTeX{} easier:
+              \begin{itemize}
+                  \item WYSIWYG editor (LyX)
+                  \item \LaTeX{} shells or IDEs (WinShell, Context, TeXnicCenter)
+                  \item Editors with syntax highlighting (Emacs)
+              \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\section{Using \LaTeX{}}
+
+\subsection{The basics}
+
+\begin{frame}{Basic \LaTeX{} document}
+    Start with a document class such as \texttt{article}.
+\end{frame}
+
+\begin{frame}{Basic \LaTeX{} document}
+    A minimal file also needs \texttt{\string\begin\{document\}} and
+    \texttt{\string\end\{document\}}.
+\end{frame}
+
+\begin{frame}{Basic \LaTeX{} document}
+    Add packages before the document starts, for example
+    \texttt{\string\usepackage[english,dutch]\{babel\}}.
+\end{frame}
+
+\begin{frame}{Basic \LaTeX{} document}
+    You can then start structuring the content with sections.
+\end{frame}
+
+\begin{frame}{Basic \LaTeX{} document}
+    Typical sectioning commands are \texttt{\string\section},
+    \texttt{\string\subsection}, and \texttt{\string\subsubsection}.
+\end{frame}
+
+\begin{frame}{Basic \LaTeX{} document}
+    Table of contents entries are generated automatically from the sectioning
+    commands.
+\end{frame}
+
+\begin{frame}{Basic \LaTeX{} document}
+    \begin{itemize}
+        \item \texttt{\string\section\{Introduction\}}
+        \item \texttt{\string\section\{An interesting section\}}
+        \item \texttt{\string\section\{Summary\}}
+        \item \texttt{\string\tableofcontents} can be used to print the outline
+    \end{itemize}
+\end{frame}
+
+\subsection{The basics of formatting}
+
+\begin{frame}{Text formatting}
+    \begin{itemize}
+        \item \LaTeX{} automatically handles:
+              \begin{itemize}
+                  \item automatic numbering of chapters, sections, and so on
+                  \item correct spacing between letters, words, and sentences
+                  \item ligatures
+                  \item word breaking (with \texttt{\string\selectlanguage\{english\}})
+                  \item justification of paragraphs and pages
+              \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Input}
+    \begin{itemize}
+        \item Forbidden characters include \# \$ \% \^{} \& \_ \{ \} and the backslash.
+        \item Literal output is usually written with \texttt{\string\verb} or the
+              \texttt{verbatim} environment.
+        \item Ready-made strings:
+              \begin{itemize}
+                  \item \texttt{\string\today} today
+                  \item \texttt{\string\TeX} \TeX{}
+                  \item \texttt{\string\LaTeX} \LaTeX{}
+              \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Special characters}
+    \begin{itemize}
+        \item Quotes:
+              \begin{itemize}
+                  \item ``click 'Start' to begin'' becomes typographic quotes in \LaTeX{}
+              \end{itemize}
+        \item Hyphens:
+              \begin{itemize}
+                  \item X-rated
+                  \item page 2--24
+                  \item yes --- or is it no
+                  \item $\pi$ and $-\pi$
+              \end{itemize}
+        \item Ellipsis: \ldots
+        \item Accents and special symbols: \"{o} is o-umlaut, \^{o} is o-circumflex,
+              \={o} is o-macron, \AE{} is AE
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Fonts}
+    \begin{tabular}{ll}
+        \texttt{\string\textrm\{...\}}     & roman         \\
+        \texttt{\string\textsf\{...\}}     & sans serif    \\
+        \texttt{\string\texttt\{...\}}     & typewriter    \\
+        \texttt{\string\textmd\{...\}}     & medium        \\
+        \texttt{\string\textbf\{...\}}     & bold          \\
+        \texttt{\string\textup\{...\}}     & upright       \\
+        \texttt{\string\textit\{...\}}     & italic        \\
+        \texttt{\string\textsl\{...\}}     & slanted       \\
+        \texttt{\string\textsc\{...\}}     & small caps    \\
+        \texttt{\string\emph\{...\}}       & emphasized    \\
+        \texttt{\string\textnormal\{...\}} & document font
+    \end{tabular}
+\end{frame}
+
+\begin{frame}{Special use of fonts}
+    \begin{itemize}
+        \item Emphasis
+              \begin{itemize}
+                  \item \underline{text} text
+                  \item \emph{emphasis} emphasis
+              \end{itemize}
+        \item Selection of fonts and sizes
+              \begin{itemize}
+                  \item \textit{You can also emphasize something if the text is italic}
+                  \item \textsf{or in sans-serif style}
+                  \item \texttt{or in typewriter style}
+                  \item \textbf{And also if it is bold!}
+              \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Font sizes}
+    \begin{tabular}{ll}
+        \texttt{\string\tiny}         & tiny            \\
+        \texttt{\string\scriptsize}   & extremely small \\
+        \texttt{\string\footnotesize} & very small      \\
+        \texttt{\string\small}        & small           \\
+        \texttt{\string\normalsize}   & normal          \\
+        \texttt{\string\large}        & large           \\
+        \texttt{\string\Large}        & larger          \\
+        \texttt{\string\LARGE}        & even larger     \\
+        \texttt{\string\huge}         & huge            \\
+        \texttt{\string\Huge}         & largest
+    \end{tabular}
+\end{frame}
+
+\section{Document structure}
+
+\begin{frame}{Titles, chapters, sections, and so on}
+    \begin{itemize}
+        \item Title: \texttt{\string\title}, \texttt{\string\author}, and
+              \texttt{\string\maketitle}
+        \item Chapters, sections, and so on
+              \begin{itemize}
+                  \item In the \texttt{article} document class: \texttt{\string\section},
+                        \texttt{\string\subsection}, \texttt{\string\subsubsection},
+                        \texttt{\string\appendix}
+                  \item In the \texttt{book} and \texttt{report} document classes:
+                        \texttt{\string\chapter}, \texttt{\string\part}
+              \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{References}
+    \begin{block}{Input}
+        Labels let you refer back to a section and its page number later in the
+        document.
+    \end{block}
+
+    \medskip
+    \begin{quote}
+        2. Preparation\par
+        And here comes the text of this paragraph.\ldots\par
+        3. Solution\par
+        In section 2 on page 10 we wrote \ldots
+    \end{quote}
+\end{frame}
+
+\begin{frame}[fragile]{Bibliography}
+    \begin{block}{Input}
+        Citations are inserted with a citation command and a bibliography
+        environment.
+    \end{block}
+
+    \begin{block}{Output}
+        D. Knuth [1] mentioned this \ldots
+
+        Bibliography
+
+        1 Knuth, Donald E.: The TeXBook (1984), Addison-Wesley Publishing
+        Company, Reading (USA). 480 p.
+    \end{block}
+\end{frame}
+
+\section{Lists and tables}
+
+\begin{frame}[fragile]{Lists: enumerate, itemize, description}
+    \begin{enumerate}
+        \item first item
+        \item second item
+    \end{enumerate}
+
+    \begin{itemize}
+        \item an item in itemize
+        \item[-] and another one!
+    \end{itemize}
+
+    \begin{description}
+        \item[high] a description
+        \item[low] final example
+    \end{description}
+\end{frame}
+
+\begin{frame}[fragile]{Lists: enumerate, itemize, description (nested)}
+    \begin{enumerate}
+        \item first item
+              \begin{itemize}
+                  \item a subitem
+                  \item[-] and another one!
+              \end{itemize}
+        \item second item
+              \begin{description}
+                  \item[high] description
+                  \item[low] and another one
+              \end{description}
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile]{Tables}
+    \begin{block}{Input}
+        A \texttt{tabular} environment aligns numbers and labels into columns.
+    \end{block}
+
+    \medskip
+    \begin{center}
+        \begin{tabular}{|r|l|}
+            \hline
+            \multicolumn{2}{|c|}{Expenses} \\
+            \hline \hline
+            1000 & travel                  \\
+            3700 & lodging                 \\
+            800  & conference              \\
+            \hline
+            5500 & total                   \\
+            \hline
+        \end{tabular}
+    \end{center}
+\end{frame}
+
+\section{Mathematics}
+
+\begin{frame}{Math mode}
+    \begin{itemize}
+        \item \LaTeX{} has a special mode for working with mathematical formulas:
+              \begin{itemize}
+                  \item Inline in text: between \texttt{\string$} signs
+                  \item Standalone unnumbered formula: between \texttt{\string\[}
+                        and \texttt{\string\]} (or between
+                        \texttt{\string\begin\{displaymath\}} and
+                        \texttt{\string\end\{displaymath\}})
+                  \item Standalone numbered formula: between
+                        \texttt{\string\begin\{equation\}} and
+                        \texttt{\string\end\{equation\}}
+              \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Examples}
+    Pythagoras proved that $a^2 = b^2 + c^2$. Moreover,
+
+    \begin{equation}
+        \label{e:vb1}
+        \lim_{n \to \infty} \sum_{k=1}^n
+        \frac{1}{k^2} = \frac{\pi^2}{6}.
+    \end{equation}
+
+    In equation~(\ref{e:vb1}) we see \ldots
+\end{frame}
+
+\begin{frame}{Examples}
+    Pythagoras proved that $a^2 = b^2 + c^2$. Moreover,
+
+    \[
+        \lim_{n \to \infty} \sum_{k=1}^{n} \frac{1}{k^2} = \frac{\pi^2}{6}.
+    \]
+
+    In equation~(1) we see \ldots
+\end{frame}
+
+\begin{frame}{More ways to typeset mathematical formulas}
+    \[
+        y = \begin{cases}
+            a     & \text{if } d > c      \\
+            b + x & \text{in the morning} \\
+            \text{all day}
+        \end{cases}
+    \]
+
+    \[
+        X = \begin{pmatrix}
+            x_{11} & x_{12} & \cdots \\
+            x_{21} & x_{22} & \cdots \\
+            \vdots & \vdots & \ddots
+        \end{pmatrix}
+    \]
+
+    \[
+        \operatorname{corr}(X, Y) =
+        \frac{\sum_{i=1}^{n}(x_i - \bar{x})(y_i - \bar{y})}
+        {\sqrt{\sum_{i=1}^{n}(x_i - \bar{x})^2
+                \sum_{i=1}^{n}(y_i - \bar{y})^2}}
+    \]
+\end{frame}
+
+\section{Extensions}
+
+\begin{frame}{EPS or PDF figures}
+    \begin{itemize}
+        \item \texttt{\string\usepackage\{graphicx\}}
+        \item \texttt{\string\includegraphics[width=0.4\string\textwidth]\{figure\}}
+        \item Create EPS with CorelDraw, FreeHand, xfig, ...
+        \item EPS with \texttt{latex} and \texttt{dvips}, PDF with \texttt{pdflatex}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{PDF, JPG and PNG figures}
+    \begin{itemize}
+        \item \texttt{\string\usepackage\{pgf\}}
+        \item \texttt{\string\pgfdeclareimage[height=3.0cm]\{figuretwo\}\{fancy\}}
+        \item \texttt{\string\pgfuseimage\{figuretwo\}}
+        \item PDF from EPS using \texttt{epstopdf}, \texttt{ps2pdf}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Floating figures and tables}
+    \begin{block}{Input}
+        A figure environment can carry a caption and a label.
+    \end{block}
+
+    We see in Figure~\ref{f:p2} \ldots
+\end{frame}
+
+\begin{frame}{Floating figures and tables}
+    \begin{figure}
+        \centering
+        \fbox{\rule{0pt}{2cm}\rule{4cm}{0pt}}
+        \caption{Image of Figure 2}
+        \label{f:p2}
+    \end{figure}
+
+    We see in Figure~\ref{f:p2} \ldots
+\end{frame}
+
+\begin{frame}{Other extensions}
+    \begin{itemize}
+        \item Hyperlinks in PDF
+              \begin{itemize}
+                  \item Package \texttt{hyperref}
+                  \item Hyperlinks for all references in the text
+                  \item Hyperlinks to external references
+              \end{itemize}
+        \item PostScript tricks
+              \begin{itemize}
+                  \item Package \texttt{pstricks}
+              \end{itemize}
+        \item Managing references in a database
+              \begin{itemize}
+                  \item BibTeX with style files
+              \end{itemize}
+        \item Music
+              \begin{itemize}
+                  \item MusiXTEX package (macros plus fonts)
+              \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Presentations}
+    \begin{itemize}
+        \item Package \texttt{beamer}
+              \begin{itemize}
+                  \item Creates a presentation PDF and handouts in one file
+                  \item Hyperlinks between sections and to external URLs
+                  \item Overlays
+              \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\section{References}
+
+\begin{frame}{References}
+    \begin{itemize}
+        \item L. Lamport,
+              \emph{LaTeX: A Document Preparation System (2nd Edition)},
+              Addison-Wesley, 1994.
+        \item F. Mittelbach, M. Goossens, J. Braams, D. Carlisle, C. Rowley,
+              \emph{The LaTeX Companion (2nd Edition)}, Addison-Wesley, 2004.
+        \item T. Oetiker, H. Partl, I. Hyna, E. Schlegl,
+              \emph{The Not So Short Introduction to \LaTeX{} 2\ensuremath{\varepsilon}},
+              \url{http://www.ctan.org/tex-archive/info/lshort/english}
+        \item CTAN, the Comprehensive \TeX{} Archive Network,
+              \url{http://www.ctan.org}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Summary}
+    \begin{itemize}
+        \item \LaTeX{} is a text processing program:
+              \begin{itemize}
+                  \item Versatile
+                  \item Customizable
+                  \item Extensible
+              \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Getting started\ldots}
+    \begin{itemize}
+        \item Practice room BBL-458.
+        \item Use the WinShell program (in the Start menu under Tools).
+        \item Get the exercises from the OIA website and try them.
+    \end{itemize}
+\end{frame}
+
+\end{document}
