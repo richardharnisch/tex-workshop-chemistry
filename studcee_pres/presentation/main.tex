@@ -4,6 +4,8 @@
 \usepackage{xifthen}
 \usepackage{hyperref}
 \usepackage{mathtools}
+\usepackage[version=4]{mhchem}
+\usepackage{siunitx}
 \usepackage{tabularx}
 \usepackage{listings}
 \usepackage{color}
@@ -56,7 +58,7 @@
 }
 
 \title{\LaTeX{}-Workshop}
-\author{Presented by: \\Gijs Peletier \& Richard Harnisch}
+\author{Presented by: Gijs Peletier \& Richard Harnisch}
 \institute[StudCee]{StudCee}
 \date{\today}
 
@@ -604,6 +606,59 @@
     \end{itemize}
 \end{frame}
 
+\section{Chemistry in TeX}
+
+\begin{frame}[fragile]{Why chemists use TeX}
+    \begin{itemize}
+        \item Chemistry writing needs consistent notation for formulas, reactions, units, and references
+        \item \LaTeX{} is strong at keeping that notation uniform across long reports and theses
+        \item Two packages show up all the time in chemistry documents:
+              \begin{itemize}
+                  \item \lstinline+mhchem+ for chemical formulas and reactions
+                  \item \lstinline+siunitx+ for numbers, units, and uncertainties
+              \end{itemize}
+        \item The goal is readable source and publication-quality output
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Chemical formulas and reactions}
+    \begin{itemize}
+        \item \lstinline+\ce+ formats formulas, ions, and reactions
+        \item Examples:
+              \begin{itemize}
+                  \item Water: \lstinline|H2O|: \ce{H2O}
+                  \item Oxidation state: \lstinline|Fe\^{}\{2+\}|: \ce{Fe^{2+}}
+                  \item Reaction: \lstinline|2 H2 + O2 -> 2 H2O|: \ce{2 H2 + O2 -> 2 H2O}
+                  \item Equilibrium: \lstinline|CH3COOH + H2O <=> CH3COO\^{}- + H3O+|: \\
+                        \ce{CH3COOH + H2O <=> CH3COO^- + H3O+}
+              \end{itemize}
+        \item This keeps subscripts, charges, arrows, and stoichiometry consistent
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Units, quantities, and data}
+    \begin{itemize}
+        \item \lstinline+siunitx+ keeps units separated from values
+        \item Examples:
+              \begin{itemize}
+                  \item Volume: \lstinline|\SI{25}{\milli\liter}|: \SI{25}{\milli\liter}
+                  \item Temperature: \lstinline|\SI{298.15}{\kelvin}|: \SI{298.15}{\kelvin}
+                  \item Concentration: \lstinline|\SI{1.20e-3}{\mole\per\liter}|: \SI{1.20e-3}{\mole\per\liter}
+                  \item Count with formatting: \lstinline|\num{6.022e23}|: \num{6.022e23}
+              \end{itemize}
+        \item Useful for lab reports, tables, and plots where significant figures matter
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Common chemistry document tips}
+    \begin{itemize}
+        \item Put reaction schemes, spectra, and tables in floats so they can be captioned and referenced
+        \item Use \lstinline+\label+ and \lstinline+\ref+ for compounds, schemes, and figures
+        \item Keep citations in a \lstinline+.bib+ file so experimental sources and papers stay manageable
+        \item If your report has a lot of notation, define a few small commands in the preamble to reduce repetition
+    \end{itemize}
+\end{frame}
+
 \section{Source Listings}
 \begin{frame}[fragile]{Source Code}
     \begin{itemize}
@@ -675,8 +730,7 @@
         Package                & Description                                         \\
         \lstinline+tipa+       & For symbols from the IPA                            \\
         \lstinline+qtree+      & For drawing (syntactic) trees                       \\
-        \lstinline+tikz-qtree+ & For drawing (syntactic) trees with \lstinline+tikz+
-        \\
+        \lstinline+tikz-qtree+ & For drawing (syntactic) trees with \lstinline+tikz+ \\
         \lstinline+gb4e+       & For glosses and the likes                           \\
         \lstinline+phonrule+   & For phonological rules                              \\
         \lstinline+lplfitch+   & For typesetting natural deduction proofs            \\
