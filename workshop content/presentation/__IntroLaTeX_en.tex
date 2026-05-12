@@ -4,14 +4,30 @@
 \usepackage{mathtools}
 \usepackage{amssymb}
 \usepackage{hyperref}
+\usepackage[version=4]{mhchem}
+\usepackage{siunitx}
+\usepackage{tikz}
 
-\usetheme{default}
-\setbeamertemplate{navigation symbols}{}
+\usetheme[compress]{Ilmenau}
+\usecolortheme{beaver}
+
+\defbeamertemplate*{headline}{miniframes theme no subsection}
+{%
+    \begin{beamercolorbox}[colsep=1.5pt]{upper separation line head}
+    \end{beamercolorbox}
+    \begin{beamercolorbox}{section in head/foot}
+        \vskip2pt\insertnavigation{\paperwidth}\vskip2pt
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[colsep=1.5pt]{lower separation line head}
+    \end{beamercolorbox}
+}
+\setbeamertemplate{blocks}[default]
+\setbeamercolor{title}{bg=}
 
 \title{An Introduction to \LaTeX}
-\author{Peter de Waal\\with material from Lennart Herlaar}
-\institute{Department of Information and Computing Sciences}
-\date{OIA \LaTeX{} workshop}
+\author[Richard Harnisch and Gijs Peletier]{\texorpdfstring{Richard Harnisch and Gijs Peletier}{Richard Harnisch and Gijs Peletier}}
+\institute{Cover: IlluminaTee, with help from StudCee}
+\date{\today}
 
 \AtBeginSection[]
 {
@@ -21,10 +37,27 @@
 }
 
 \begin{document}
-
+{\usebackgroundtemplate{
+    \vbox to 1.5\paperheight{\vfil{\hfil{ %! chktex 1
+                \begin{minipage}{0.475\textwidth}
+                    \begin{tikzpicture}
+                        \node[opacity=0.2] {\includegraphics[width=\textwidth]{studcee_logo}};
+                    \end{tikzpicture}
+                \end{minipage}
+            }
+            \begin{minipage}{0.48\textwidth}
+                \begin{tikzpicture}
+                    \node[opacity=0.2] {\includegraphics[width=\textwidth]{cover_logo}};
+                \end{tikzpicture}
+            \end{minipage}}
+        \hfil\vfil}
+}
 \begin{frame}
-    \titlepage
+    \maketitle
+    $~$ \\
+    \raggedleft \scriptsize{Credits slides: Ren\'e Mellema, Nico Steegman, Peter de Waal, Lennart Herlaar}
 \end{frame}
+}
 
 \begin{frame}{Outline}
     \tableofcontents
@@ -35,78 +68,58 @@
 \subsection{What is \LaTeX{} and why?}
 
 \begin{frame}{Why \LaTeX?}
-    If you merely want to produce a passably good document --- something
-    acceptable and basically readable but not really beautiful --- a simpler
-    system will usually suffice.
+    \it
+    If you merely want to produce a passably good document --- something acceptable and basically readable but not really beautiful --- a simpler system will usually sufﬁce. \\[2\baselineskip]
+    With \TeX~the goal is to produce the ﬁnest quality. \\[2\baselineskip]
+    ---Donald E. Knuth
+\end{frame}
+
+\begin{frame}{Why \LaTeX?}
+    \LaTeX{} is a typesetting system (based on \TeX) designed for structured, technical writing.
 
     \medskip
-    With \TeX{} the goal is to produce the finest quality.
-
-    \medskip
-    Donald E. Knuth
-\end{frame}
-
-\begin{frame}{\TeX{}}
+    For a bachelor's thesis that usually means:
     \begin{itemize}
-        \item Program for typesetting technical text
-              \begin{itemize}
-                  \item Specialised in formulas
-                  \item Professional typographic design
-                  \item Freely available
-                  \item Stable
-              \end{itemize}
-        \item File format based on ASCII
-              \begin{itemize}
-                  \item Easy to send by e-mail
-                  \item Works on all systems
-              \end{itemize}
-        \item Easily extendable through macros
+        \item consistent layout across a long document
+        \item strong support for formulas, figures, tables, and references
+        \item easy automatic numbering and cross-referencing
+        \item source files that stay manageable as the document grows
     \end{itemize}
 \end{frame}
 
-\begin{frame}{\LaTeX{}}
+\begin{frame}{Why not just use Word?}
     \begin{itemize}
-        \item Macro package for \TeX{}
+        \item Word is often faster for short, simple documents
+        \item \LaTeX{} becomes attractive when you need:
               \begin{itemize}
-                  \item Freely available
-                  \item Stable
+                  \item many sections, figures, tables, and citations
+                  \item stable numbering and references
+                  \item precise control over formulas and notation
+                  \item collaboration around plain-text source files
               \end{itemize}
-        \item Logical structure
-        \item Widely used in the exact sciences
+        \item It is not WYSIWYG
               \begin{itemize}
-                  \item Publishers require the use of their own style files with
-                        macros for their own layout
+                  \item you write source code
+                  \item then compile it to PDF
               \end{itemize}
     \end{itemize}
 \end{frame}
 
-\begin{frame}{\LaTeX{} workflow}
+\begin{frame}{Workshop workflow}
     \begin{itemize}
-        \item Create ASCII file(s) with \LaTeX{} commands
-        \item Create a DVI file from this with \texttt{latex} (Device Independent)
-        \item Turn the DVI file into a PostScript file with \texttt{dvips} or a
-              PDF with \texttt{dvi2pdf}, or
-        \item Create a PDF file directly with \texttt{pdflatex}
-        \item Output can be viewed with
+        \item We will assume you use Overleaf
               \begin{itemize}
-                  \item DVI: \texttt{xdvi}, \texttt{yap}
-                  \item PS: Ghostscript
-                  \item PDF: Acrobat Reader
+                  \item no installation needed
+                  \item editor, compiler, and PDF preview in one place
               \end{itemize}
-    \end{itemize}
-\end{frame}
-
-\begin{frame}{\LaTeX{} tools}
-    \begin{itemize}
-        \item There are several \TeX{} distributions
-        \item Any ASCII editor is fine
-        \item \LaTeX{} is not WYSIWYG
-        \item There are tools to make working with \LaTeX{} easier:
+        \item Typical workflow:
               \begin{itemize}
-                  \item WYSIWYG editor (LyX)
-                  \item \LaTeX{} shells or IDEs (WinShell, Context, TeXnicCenter)
-                  \item Editors with syntax highlighting (Emacs)
+                  \item start from a template or minimal file
+                  \item edit the source on the left
+                  \item recompile and inspect the PDF on the right
+                  \item fix warnings and errors as you go
               \end{itemize}
+        \item For this workshop: focus on readable source, not perfect memorisation
     \end{itemize}
 \end{frame}
 
@@ -114,238 +127,165 @@
 
 \subsection{The basics}
 
-\begin{frame}{Basic \LaTeX{} document}
-    Start with a document class such as \texttt{article}.
-\end{frame}
-
-\begin{frame}{Basic \LaTeX{} document}
-    A minimal file also needs \texttt{\string\begin\{document\}} and
-    \texttt{\string\end\{document\}}.
-\end{frame}
-
-\begin{frame}{Basic \LaTeX{} document}
-    Add packages before the document starts, for example
-    \texttt{\string\usepackage[english,dutch]\{babel\}}.
-\end{frame}
-
-\begin{frame}{Basic \LaTeX{} document}
-    You can then start structuring the content with sections.
-\end{frame}
-
-\begin{frame}{Basic \LaTeX{} document}
-    Typical sectioning commands are \texttt{\string\section},
-    \texttt{\string\subsection}, and \texttt{\string\subsubsection}.
-\end{frame}
-
-\begin{frame}{Basic \LaTeX{} document}
-    Table of contents entries are generated automatically from the sectioning
-    commands.
-\end{frame}
-
-\begin{frame}{Basic \LaTeX{} document}
+\begin{frame}[fragile]{A minimal thesis-style document}
     \begin{itemize}
-        \item \texttt{\string\section\{Introduction\}}
-        \item \texttt{\string\section\{An interesting section\}}
-        \item \texttt{\string\section\{Summary\}}
-        \item \texttt{\string\tableofcontents} can be used to print the outline
+        \item A document has two main parts:
+              \begin{itemize}
+                  \item the preamble: setup
+                  \item the document body: content
+              \end{itemize}
+        \item Typical starting points:
+              \begin{itemize}
+                  \item \texttt{\string\documentclass\{article\}}
+                  \item \texttt{\string\usepackage\{...\}}
+                  \item \texttt{\string\begin\{document\} ... \string\end\{document\}}
+              \end{itemize}
+        \item For a thesis, the document class is often given by your programme,
+              faculty, or publisher
     \end{itemize}
 \end{frame}
 
 \subsection{The basics of formatting}
 
-\begin{frame}{Text formatting}
+\begin{frame}[fragile]{Commands, environments, and sections}
+    \begin{itemize}
+        \item Commands start with a backslash:
+              \texttt{\string\title\{...\}}, \texttt{\string\textbf\{...\}}
+        \item Many commands take arguments in braces
+        \item Environments start and end in pairs:
+              \texttt{\string\begin\{figure\}} ... \texttt{\string\end\{figure\}}
+        \item Structure matters more than appearance:
+              \begin{itemize}
+                  \item \texttt{\string\section\{Introduction\}}
+                  \item \texttt{\string\subsection\{Methods\}}
+                  \item \texttt{\string\tableofcontents}
+              \end{itemize}
+        \item Numbering and contents entries are generated automatically
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Text flow and input}
     \begin{itemize}
         \item \LaTeX{} automatically handles:
               \begin{itemize}
-                  \item automatic numbering of chapters, sections, and so on
-                  \item correct spacing between letters, words, and sentences
-                  \item ligatures
-                  \item word breaking (with \texttt{\string\selectlanguage\{english\}})
-                  \item justification of paragraphs and pages
+                  \item spacing
+                  \item paragraph layout
+                  \item hyphenation
+                  \item numbering of sections, figures, tables, and equations
               \end{itemize}
+        \item White space is mostly ignored
+        \item An empty line starts a new paragraph
+        \item \% starts a comment
     \end{itemize}
 \end{frame}
 
-\begin{frame}{Input}
+\begin{frame}[fragile]{Special characters and text formatting}
     \begin{itemize}
-        \item Forbidden characters include \# \$ \% \^{} \& \_ \{ \} and the backslash.
-        \item Literal output is usually written with \texttt{\string\verb} or the
-              \texttt{verbatim} environment.
-        \item Ready-made strings:
+        \item These characters have a special meaning:
+              \texttt{\# \$ \% \^{} \& \_ \{ \} \string~ \string\ }
+        \item Use formatting commands instead of manual styling:
               \begin{itemize}
-                  \item \texttt{\string\today} today
-                  \item \texttt{\string\TeX} \TeX{}
-                  \item \texttt{\string\LaTeX} \LaTeX{}
+                  \item \texttt{\string\textbf\{...\}} for bold
+                  \item \texttt{\string\emph\{...\}} for emphasis
+                  \item \texttt{\string\texttt\{...\}} for code-like text
+              \end{itemize}
+        \item A few common details:
+              \begin{itemize}
+                  \item quotes are typed as ``like this''
+                  \item hyphen, en-dash, em-dash: \texttt{-}, \texttt{--}, \texttt{---}
+                  \item \texttt{\string\ldots} gives an ellipsis: \ldots
               \end{itemize}
     \end{itemize}
 \end{frame}
 
-\begin{frame}{Special characters}
-    \begin{itemize}
-        \item Quotes:
-              \begin{itemize}
-                  \item ``click 'Start' to begin'' becomes typographic quotes in \LaTeX{}
-              \end{itemize}
-        \item Hyphens:
-              \begin{itemize}
-                  \item X-rated
-                  \item page 2--24
-                  \item yes --- or is it no
-                  \item $\pi$ and $-\pi$
-              \end{itemize}
-        \item Ellipsis: \ldots
-        \item Accents and special symbols: \"{o} is o-umlaut, \^{o} is o-circumflex,
-              \={o} is o-macron, \AE{} is AE
-    \end{itemize}
-\end{frame}
-
-\begin{frame}{Fonts}
+\begin{frame}{Formatting commands you will actually use}
     \begin{tabular}{ll}
-        \texttt{\string\textrm\{...\}}     & roman         \\
-        \texttt{\string\textsf\{...\}}     & sans serif    \\
-        \texttt{\string\texttt\{...\}}     & typewriter    \\
-        \texttt{\string\textmd\{...\}}     & medium        \\
-        \texttt{\string\textbf\{...\}}     & bold          \\
-        \texttt{\string\textup\{...\}}     & upright       \\
-        \texttt{\string\textit\{...\}}     & italic        \\
-        \texttt{\string\textsl\{...\}}     & slanted       \\
-        \texttt{\string\textsc\{...\}}     & small caps    \\
-        \texttt{\string\emph\{...\}}       & emphasized    \\
-        \texttt{\string\textnormal\{...\}} & document font
-    \end{tabular}
-\end{frame}
-
-\begin{frame}{Special use of fonts}
-    \begin{itemize}
-        \item Emphasis
-              \begin{itemize}
-                  \item \underline{text} text
-                  \item \emph{emphasis} emphasis
-              \end{itemize}
-        \item Selection of fonts and sizes
-              \begin{itemize}
-                  \item \textit{You can also emphasize something if the text is italic}
-                  \item \textsf{or in sans-serif style}
-                  \item \texttt{or in typewriter style}
-                  \item \textbf{And also if it is bold!}
-              \end{itemize}
-    \end{itemize}
-\end{frame}
-
-\begin{frame}{Font sizes}
-    \begin{tabular}{ll}
-        \texttt{\string\tiny}         & tiny            \\
-        \texttt{\string\scriptsize}   & extremely small \\
-        \texttt{\string\footnotesize} & very small      \\
-        \texttt{\string\small}        & small           \\
-        \texttt{\string\normalsize}   & normal          \\
-        \texttt{\string\large}        & large           \\
-        \texttt{\string\Large}        & larger          \\
-        \texttt{\string\LARGE}        & even larger     \\
-        \texttt{\string\huge}         & huge            \\
-        \texttt{\string\Huge}         & largest
+        \texttt{\string\textbf\{...\}}    & bold text         \\
+        \texttt{\string\textit\{...\}}    & italic text       \\
+        \texttt{\string\emph\{...\}}      & semantic emphasis \\
+        \texttt{\string\underline\{...\}} & underlined text   \\
+        \texttt{\string\texttt\{...\}}    & monospaced text   \\
+        \texttt{\string\small}            & smaller text size \\
+        \texttt{\string\Large}            & larger text size
     \end{tabular}
 \end{frame}
 
 \section{Document structure}
 
-\begin{frame}{Titles, chapters, sections, and so on}
+\begin{frame}{Document structure for a thesis}
     \begin{itemize}
-        \item Title: \texttt{\string\title}, \texttt{\string\author}, and
-              \texttt{\string\maketitle}
-        \item Chapters, sections, and so on
+        \item Front matter often contains:
               \begin{itemize}
-                  \item In the \texttt{article} document class: \texttt{\string\section},
-                        \texttt{\string\subsection}, \texttt{\string\subsubsection},
-                        \texttt{\string\appendix}
-                  \item In the \texttt{book} and \texttt{report} document classes:
-                        \texttt{\string\chapter}, \texttt{\string\part}
+                  \item title page
+                  \item abstract
+                  \item table of contents
               \end{itemize}
+        \item Main matter is built from sections and subsections
+        \item Back matter may contain appendices and the bibliography
+        \item Good structure makes later editing much easier than manual
+              formatting does
     \end{itemize}
 \end{frame}
 
-\begin{frame}[fragile]{References}
-    \begin{block}{Input}
-        Labels let you refer back to a section and its page number later in the
-        document.
-    \end{block}
-
-    \medskip
-    \begin{quote}
-        2. Preparation\par
-        And here comes the text of this paragraph.\ldots\par
-        3. Solution\par
-        In section 2 on page 10 we wrote \ldots
-    \end{quote}
+\begin{frame}[fragile]{Cross-references}
+    \begin{itemize}
+        \item Let \LaTeX{} number things for you
+        \item Add a label where something is defined:
+              \texttt{\string\label\{sec:method\}}
+        \item Refer to it later with:
+              \begin{itemize}
+                  \item \texttt{\string\ref\{sec:method\}}
+                  \item \texttt{\string\pageref\{sec:method\}}
+              \end{itemize}
+        \item This works for sections, equations, figures, and tables
+        \item Result: fewer broken references after editing
+    \end{itemize}
 \end{frame}
 
 \begin{frame}[fragile]{Bibliography}
-    \begin{block}{Input}
-        Citations are inserted with a citation command and a bibliography
-        environment.
-    \end{block}
-
-    \begin{block}{Output}
-        D. Knuth [1] mentioned this \ldots
-
-        Bibliography
-
-        1 Knuth, Donald E.: The TeXBook (1984), Addison-Wesley Publishing
-        Company, Reading (USA). 480 p.
-    \end{block}
+    \begin{itemize}
+        \item Thesis writing almost always means reference management
+        \item Keep references in a separate \texttt{.bib} file
+        \item Cite in the text with a command such as \texttt{\string\cite\{...\}}
+        \item Print the reference list with your chosen bibliography setup
+        \item The exact citation style is usually decided by your programme,
+              supervisor, or journal
+    \end{itemize}
 \end{frame}
 
 \section{Lists and tables}
 
-\begin{frame}[fragile]{Lists: enumerate, itemize, description}
-    \begin{enumerate}
-        \item first item
-        \item second item
-    \end{enumerate}
-
+\begin{frame}[fragile]{Lists}
     \begin{itemize}
-        \item an item in itemize
-        \item[-] and another one!
-    \end{itemize}
-
-    \begin{description}
-        \item[high] a description
-        \item[low] final example
-    \end{description}
-\end{frame}
-
-\begin{frame}[fragile]{Lists: enumerate, itemize, description (nested)}
-    \begin{enumerate}
-        \item first item
+        \item Three common list environments:
               \begin{itemize}
-                  \item a subitem
-                  \item[-] and another one!
+                  \item \texttt{itemize} for bullet points
+                  \item \texttt{enumerate} for numbered steps
+                  \item \texttt{description} for term-definition lists
               \end{itemize}
-        \item second item
-              \begin{description}
-                  \item[high] description
-                  \item[low] and another one
-              \end{description}
-    \end{enumerate}
+        \item Each new list item starts with \texttt{\string\item}
+        \item Lists can be nested
+        \item Useful for protocols, assumptions, and summarising results
+    \end{itemize}
 \end{frame}
 
 \begin{frame}[fragile]{Tables}
-    \begin{block}{Input}
-        A \texttt{tabular} environment aligns numbers and labels into columns.
-    \end{block}
+    \begin{itemize}
+        \item Use \texttt{tabular} to align values in columns
+        \item Put important tables in a \texttt{table} environment if they need
+              a caption and label
+        \item Keep table structure simple and readable
+        \item For scientific tables, consistency of units and significant figures
+              matters more than decorative lines
+    \end{itemize}
 
     \medskip
     \begin{center}
-        \begin{tabular}{|r|l|}
-            \hline
-            \multicolumn{2}{|c|}{Expenses} \\
-            \hline \hline
-            1000 & travel                  \\
-            3700 & lodging                 \\
-            800  & conference              \\
-            \hline
-            5500 & total                   \\
-            \hline
+        \begin{tabular}{l r}
+            Sample & Yield (\%) \\
+            A      & 81         \\
+            B      & 77         \\
+            C      & 84
         \end{tabular}
     \end{center}
 \end{frame}
@@ -354,173 +294,116 @@
 
 \begin{frame}{Math mode}
     \begin{itemize}
-        \item \LaTeX{} has a special mode for working with mathematical formulas:
+        \item \LaTeX{} has a special mode for mathematical notation
+        \item Common forms:
               \begin{itemize}
-                  \item Inline in text: between \texttt{\string$} signs
-                  \item Standalone unnumbered formula: between \texttt{\string\[}
-                        and \texttt{\string\]} (or between
-                        \texttt{\string\begin\{displaymath\}} and
-                        \texttt{\string\end\{displaymath\}})
-                  \item Standalone numbered formula: between
-                        \texttt{\string\begin\{equation\}} and
-                        \texttt{\string\end\{equation\}}
+                  \item inline math with \texttt{\string$...\string$}
+                  \item display math with \texttt{\string\[...\string\]}
+                  \item numbered equations with \texttt{equation}
               \end{itemize}
+        \item Superscripts and subscripts are built in
+        \item This matters even in chemistry theses for symbols, variables, and models
     \end{itemize}
 \end{frame}
 
 \begin{frame}[fragile]{Examples}
-    Pythagoras proved that $a^2 = b^2 + c^2$. Moreover,
+    Inline example:
+    $c^2 = a^2 + b^2$
 
-    \begin{equation}
-        \label{e:vb1}
+    \medskip
+    Displayed and numbered:
+    \[
         \lim_{n \to \infty} \sum_{k=1}^n
-        \frac{1}{k^2} = \frac{\pi^2}{6}.
-    \end{equation}
+        \frac{1}{k^2} = \frac{\pi^2}{6}
+    \]
 
-    In equation~(\ref{e:vb1}) we see \ldots
+    \medskip
+    Useful commands include \texttt{\string\frac}, \texttt{\string\sqrt},
+    superscripts with \texttt{\string^{}}, and subscripts with
+    \texttt{\string_{}}
 \end{frame}
 
-\begin{frame}{Examples}
-    Pythagoras proved that $a^2 = b^2 + c^2$. Moreover,
+\section{Figures and chemistry}
 
-    \[
-        \lim_{n \to \infty} \sum_{k=1}^{n} \frac{1}{k^2} = \frac{\pi^2}{6}.
-    \]
-
-    In equation~(1) we see \ldots
-\end{frame}
-
-\begin{frame}{More ways to typeset mathematical formulas}
-    \[
-        y = \begin{cases}
-            a     & \text{if } d > c      \\
-            b + x & \text{in the morning} \\
-            \text{all day}
-        \end{cases}
-    \]
-
-    \[
-        X = \begin{pmatrix}
-            x_{11} & x_{12} & \cdots \\
-            x_{21} & x_{22} & \cdots \\
-            \vdots & \vdots & \ddots
-        \end{pmatrix}
-    \]
-
-    \[
-        \operatorname{corr}(X, Y) =
-        \frac{\sum_{i=1}^{n}(x_i - \bar{x})(y_i - \bar{y})}
-        {\sqrt{\sum_{i=1}^{n}(x_i - \bar{x})^2
-                \sum_{i=1}^{n}(y_i - \bar{y})^2}}
-    \]
-\end{frame}
-
-\section{Extensions}
-
-\begin{frame}{EPS or PDF figures}
+\begin{frame}[fragile]{Figures and floats}
     \begin{itemize}
-        \item \texttt{\string\usepackage\{graphicx\}}
-        \item \texttt{\string\includegraphics[width=0.4\string\textwidth]\{figure\}}
-        \item Create EPS with CorelDraw, FreeHand, xfig, ...
-        \item EPS with \texttt{latex} and \texttt{dvips}, PDF with \texttt{pdflatex}
+        \item Use \texttt{\string\usepackage\{graphicx\}} to include images
+        \item Put important figures in a \texttt{figure} environment
+        \item Add a \texttt{\string\caption} and \texttt{\string\label} so you can
+              refer to them later
+        \item Let \LaTeX{} help with placement instead of forcing every image by hand
     \end{itemize}
-\end{frame}
 
-\begin{frame}{PDF, JPG and PNG figures}
-    \begin{itemize}
-        \item \texttt{\string\usepackage\{pgf\}}
-        \item \texttt{\string\pgfdeclareimage[height=3.0cm]\{figuretwo\}\{fancy\}}
-        \item \texttt{\string\pgfuseimage\{figuretwo\}}
-        \item PDF from EPS using \texttt{epstopdf}, \texttt{ps2pdf}
-    \end{itemize}
-\end{frame}
-
-\begin{frame}[fragile]{Floating figures and tables}
-    \begin{block}{Input}
-        A figure environment can carry a caption and a label.
-    \end{block}
-
-    We see in Figure~\ref{f:p2} \ldots
-\end{frame}
-
-\begin{frame}{Floating figures and tables}
+    \medskip
     \begin{figure}
         \centering
         \fbox{\rule{0pt}{2cm}\rule{4cm}{0pt}}
-        \caption{Image of Figure 2}
-        \label{f:p2}
+        \caption{Example figure placeholder}
     \end{figure}
-
-    We see in Figure~\ref{f:p2} \ldots
 \end{frame}
 
-\begin{frame}{Other extensions}
+\begin{frame}[fragile]{Chemistry: formulas and reactions}
     \begin{itemize}
-        \item Hyperlinks in PDF
+        \item A useful package for chemistry is \texttt{mhchem}
+        \item It provides \texttt{\string\ce\{...\}} for formulas, charges, and reactions
+        \item Examples:
               \begin{itemize}
-                  \item Package \texttt{hyperref}
-                  \item Hyperlinks for all references in the text
-                  \item Hyperlinks to external references
+                  \item \ce{H2O}
+                  \item \ce{Fe^{3+}}
+                  \item \ce{2 H2 + O2 -> 2 H2O}
+                  \item \ce{CH3COOH + H2O <=> CH3COO^- + H3O+}
               \end{itemize}
-        \item PostScript tricks
-              \begin{itemize}
-                  \item Package \texttt{pstricks}
-              \end{itemize}
-        \item Managing references in a database
-              \begin{itemize}
-                  \item BibTeX with style files
-              \end{itemize}
-        \item Music
-              \begin{itemize}
-                  \item MusiXTEX package (macros plus fonts)
-              \end{itemize}
+        \item This is usually clearer and more reliable than hand-formatting chemistry notation
     \end{itemize}
 \end{frame}
 
-\begin{frame}{Presentations}
+\begin{frame}[fragile]{Chemistry: units and measurements}
     \begin{itemize}
-        \item Package \texttt{beamer}
+        \item A useful package for quantities is \texttt{siunitx}
+        \item It keeps values and units consistent throughout a thesis
+        \item Examples:
               \begin{itemize}
-                  \item Creates a presentation PDF and handouts in one file
-                  \item Hyperlinks between sections and to external URLs
-                  \item Overlays
+                  \item \texttt{\string\SI\{25\}\{\string\milli\string\liter\}} gives
+                        \SI{25}{\milli\liter}
+                  \item \texttt{\string\SI\{298.15\}\{\string\kelvin\}} gives
+                        \SI{298.15}{\kelvin}
+                  \item \texttt{\string\num\{6.022e23\}} gives \num{6.022e23}
               \end{itemize}
+        \item This is especially useful in result tables and experimental sections
     \end{itemize}
 \end{frame}
 
 \section{References}
 
-\begin{frame}{References}
+\begin{frame}{Further reading}
     \begin{itemize}
-        \item L. Lamport,
-              \emph{LaTeX: A Document Preparation System (2nd Edition)},
-              Addison-Wesley, 1994.
-        \item F. Mittelbach, M. Goossens, J. Braams, D. Carlisle, C. Rowley,
-              \emph{The LaTeX Companion (2nd Edition)}, Addison-Wesley, 2004.
-        \item T. Oetiker, H. Partl, I. Hyna, E. Schlegl,
-              \emph{The Not So Short Introduction to \LaTeX{} 2\ensuremath{\varepsilon}},
-              \url{http://www.ctan.org/tex-archive/info/lshort/english}
-        \item CTAN, the Comprehensive \TeX{} Archive Network,
-              \url{http://www.ctan.org}
+        \item Overleaf documentation: \url{https://www.overleaf.com/learn}
+        \item The Not So Short Introduction to \LaTeX{}:
+              \url{https://ctan.org/pkg/lshort}
+        \item CTAN package archive: \url{https://ctan.org}
+        \item Wikibooks pages on tables, mathematics, and bibliography management
     \end{itemize}
 \end{frame}
 
 \begin{frame}{Summary}
     \begin{itemize}
-        \item \LaTeX{} is a text processing program:
+        \item For your longer work (e.g. theses), focus on:
               \begin{itemize}
-                  \item Versatile
-                  \item Customizable
-                  \item Extensible
+                  \item structure before styling
+                  \item labels and references instead of manual numbering
+                  \item bibliography management from the start
+                  \item packages only when they solve a real problem
               \end{itemize}
+        \item For chemistry, remember the package names
+              \texttt{mhchem} and \texttt{siunitx}
     \end{itemize}
 \end{frame}
 
 \begin{frame}{Getting started\ldots}
     \begin{itemize}
-        \item Practice room BBL-458.
-        \item Use the WinShell program (in the Start menu under Tools).
-        \item Get the exercises from the OIA website and try them.
+        \item Open the workshop exercise file: \url{t.ly/iyYsG}
+        \item Experiment! Feel free to extend or change the exercises as you like.
+        \item Ask for help if you get stuck. Feel free to use your favorite LLM.
     \end{itemize}
 \end{frame}
 
